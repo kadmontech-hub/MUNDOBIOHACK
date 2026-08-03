@@ -59,3 +59,8 @@ imágenes sin `alt`, botones sin nombre accesible, URLs inseguras o textos inter
 Las imágenes editoriales y de productos continúan cargándose desde Imgur.
 Las miniaturas audiovisuales cargan desde YouTube.
 Cada imagen externa tiene un fallback local.
+
+
+## V15 — sistema simétrico
+
+Esta versión normaliza alturas, proporciones y grillas. La selección editorial utiliza una pieza principal y cuatro piezas secundarias en una matriz 2x2. Los productos usan una composición 2–1–1 de igual altura en desktop.
