@@ -1,0 +1,9 @@
+{
+  "name": "mundo-biohack",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "preflight": "node scripts/preflight.mjs",
+    "build": "node scripts/preflight.mjs"
+  }
+}

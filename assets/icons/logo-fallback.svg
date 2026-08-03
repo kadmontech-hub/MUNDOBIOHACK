@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Mundo Biohack</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#39d5ff"/>
+      <stop offset="1" stop-color="#1767ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#04101d"/>
+  <circle cx="27" cy="32" r="20" fill="none" stroke="url(#g)" stroke-width="4"/>
+  <path d="M7 32h40M12 20h31M12 44h29M27 12c-7 8-7 32 0 40M27 12c7 8 7 32 0 40"
+        fill="none" stroke="url(#g)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M38 12c11 7-7 13 4 20s-7 13 4 20M49 12c-11 7 7 13-4 20s7 13-4 20"
+        fill="none" stroke="url(#g)" stroke-width="3.4" stroke-linecap="round"/>
+</svg>
