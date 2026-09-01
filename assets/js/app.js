@@ -52,6 +52,15 @@
     wrapper.hidden = !config.legalContact;
   });
 
+  document.querySelectorAll('[data-config-section="community"]').forEach((section) => {
+    const hasRealAction = Boolean(
+      config.communityWhatsAppUrl ||
+      config.salesWhatsAppUrl ||
+      config.instagramUrl
+    );
+    section.hidden = !hasRealAction;
+  });
+
   if (config.logoUrl) {
     document.querySelectorAll("[data-logo-image]").forEach((image) => {
       image.src = config.logoUrl;

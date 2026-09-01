@@ -779,3 +779,150 @@ body{background:radial-gradient(circle at 78% 5%,rgba(0,104,255,.075),transparen
     grid-template-columns:1fr;
   }
 }
+
+/* =========================================================
+   V15.3 — DAVID VISUAL + CONVERSION
+   Same canonical identity. Clearer hierarchy, lower density.
+   ========================================================= */
+
+/* Hero: side cards become visual signposts, not mini articles. */
+.hero-side-card__content p{display:none}
+.hero-side-card__content{max-width:92%}
+.hero-side-card h2{margin-bottom:0}
+.hero-side-card .content-status,
+.hero-side-card .external-badge,
+.hero-side-card .product-tag{margin-bottom:8px}
+
+/* Products: one action language across the ecosystem. */
+.product-actions{margin-top:14px}
+.product-actions .secondary-btn{min-width:132px}
+
+/* Topics: six choices, always a clean 3x2 matrix on desktop. */
+#explorar-temas .topics-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-auto-flow:row;
+  grid-auto-columns:auto;
+}
+
+/* TV: keep the module, reduce its visual dominance by ~20%. */
+#mundo-biohack-tv .tv-feature,
+#mundo-biohack-tv .tv-feature__copy,
+#mundo-biohack-tv .tv-feature__visual{
+  min-height:250px;
+}
+#mundo-biohack-tv .tv-feature__copy{padding:clamp(20px,2.3vw,30px)}
+#mundo-biohack-tv .tv-feature__copy h2{font-size:clamp(28px,2.7vw,39px)}
+#mundo-biohack-tv .future-formats{
+  grid-auto-rows:185px;
+  gap:12px;
+  margin-top:14px;
+}
+#mundo-biohack-tv .future-format{
+  height:185px;
+  grid-template-rows:105px 1fr;
+}
+#mundo-biohack-tv .future-format img{height:105px}
+#mundo-biohack-tv .future-format div{padding:12px 14px}
+#mundo-biohack-tv .future-format h3{font-size:15px}
+#mundo-biohack-tv .future-format p{font-size:11px}
+
+/* Editorial: one anchor + three concise supporting sources. */
+#seleccion-editorial .selection-layout{
+  grid-template-columns:minmax(0,1.12fr) minmax(340px,.88fr);
+  min-height:520px;
+}
+#seleccion-editorial .selection-lead{
+  height:520px;
+  grid-template-rows:290px 1fr;
+}
+#seleccion-editorial .selection-lead__image{height:290px}
+#seleccion-editorial .selection-grid{
+  height:520px;
+  grid-template-columns:1fr;
+  grid-template-rows:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+#seleccion-editorial .selection-card{
+  display:grid;
+  height:100%;
+  min-height:0;
+  grid-template-columns:145px 1fr;
+  grid-template-rows:1fr;
+}
+#seleccion-editorial .selection-card .media-card__image{
+  width:145px;
+  height:100%;
+  min-height:0;
+  aspect-ratio:auto;
+}
+#seleccion-editorial .selection-card .media-card__body{
+  justify-content:center;
+  padding:12px 14px;
+}
+#seleccion-editorial .selection-card h3{
+  min-height:0;
+  margin:6px 0 5px;
+  font-size:15px;
+}
+#seleccion-editorial .selection-card .original-title,
+#seleccion-editorial .selection-card p:not(.original-title){
+  font-size:11px;
+}
+
+/* Community only earns homepage space when a real action exists. */
+[data-config-section="community"][hidden]{display:none!important}
+
+/* Footer: same scale, better legibility and scanning. */
+.site-footer{padding-top:38px}
+.footer-grid{gap:clamp(24px,3vw,42px)}
+.footer-brand p{max-width:360px;font-size:14px;line-height:1.6}
+.footer-col h2{font-size:13px;letter-spacing:.08em}
+.footer-col a,.footer-col span{font-size:14px;line-height:1.5}
+
+@media(max-width:980px){
+  #explorar-temas .topics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #mundo-biohack-tv .tv-feature,
+  #mundo-biohack-tv .tv-feature__copy,
+  #mundo-biohack-tv .tv-feature__visual{min-height:230px}
+  #seleccion-editorial .selection-layout{grid-template-columns:1fr;min-height:0}
+  #seleccion-editorial .selection-lead{height:auto;min-height:450px;grid-template-rows:250px 1fr}
+  #seleccion-editorial .selection-lead__image{height:250px}
+  #seleccion-editorial .selection-grid{
+    height:auto;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-rows:1fr;
+  }
+  #seleccion-editorial .selection-card{
+    min-height:250px;
+    grid-template-columns:1fr;
+    grid-template-rows:115px 1fr;
+  }
+  #seleccion-editorial .selection-card .media-card__image{width:100%;height:115px}
+}
+
+@media(max-width:720px){
+  #explorar-temas .topics-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-auto-flow:row;
+    grid-auto-columns:auto;
+    overflow:visible;
+  }
+  #mundo-biohack-tv .tv-feature__copy{padding:22px 20px}
+  #mundo-biohack-tv .tv-feature__visual{height:210px;min-height:210px}
+  #mundo-biohack-tv .future-formats{grid-template-columns:1fr;grid-auto-rows:auto}
+  #mundo-biohack-tv .future-format{height:auto;min-height:175px;grid-template-rows:100px auto}
+  #mundo-biohack-tv .future-format img{height:100px}
+  #seleccion-editorial .selection-grid{grid-template-columns:1fr;gap:10px}
+  #seleccion-editorial .selection-card{
+    min-height:220px;
+    grid-template-columns:1fr;
+    grid-template-rows:110px auto;
+  }
+  #seleccion-editorial .selection-card .media-card__image{height:110px}
+}
+
+@media(max-width:480px){
+  #explorar-temas .topics-grid{grid-template-columns:1fr}
+}
