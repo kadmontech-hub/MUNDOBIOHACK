@@ -1,17 +1,109 @@
 {
-  "name": "Mundo Biohack",
-  "short_name": "Mundo Biohack",
-  "description": "Biohacking, hábitos, tecnología y bienestar explicados con criterio.",
-  "start_url": "/",
-  "scope": "/",
-  "display": "standalone",
-  "background_color": "#07101f",
-  "theme_color": "#07101f",
-  "icons": [
-    {
-      "src": "/assets/icons/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
+  "project": "MUNDOBIOHACK.COM",
+  "task": "MUNDOBIOHACK_V14_PRODUCTION",
+  "entrypoint": "index.html",
+  "deployment": "GitHub + Vercel static",
+  "preflight": "PREFLIGHT OK: 15 archivos verificados.",
+  "files": {
+    "CHANGELOG-V14.md": {
+      "sha256": "e2a0d64bfa583ab0daced8886ac4db2374f916af08b1993210068e44f397cf0c",
+      "size_bytes": 1473
+    },
+    "robots.txt": {
+      "sha256": "017cfbfc19211dfbc7808f7bf8deb9e71eb6a469b15e6e735316b8e579f805f0",
+      "size_bytes": 70
+    },
+    "terminos.html": {
+      "sha256": "f6f568a0e0ce4af56261d9cf30044a71627d20c1b6044c7ffcef9f93c34bb303",
+      "size_bytes": 2260
+    },
+    "privacidad.html": {
+      "sha256": "d5f58a8b7752a9c0517f6b641b6d32e7a4688644f6893fb2c68e78a59fccc129",
+      "size_bytes": 2294
+    },
+    "aviso-educativo.html": {
+      "sha256": "482dcfb2bfb021d0b5b3ba075078f14d0bc65d02af1594b1c630484ba7bf826e",
+      "size_bytes": 2364
+    },
+    "manifest.json": {
+      "sha256": "2cf888918d6507338bf4e5a1fd93d519dde4cbd3b8d42b23180caab3730b3455",
+      "size_bytes": 3467
+    },
+    "vercel.json": {
+      "sha256": "40467a1a6ea1de3e7480920e852157ca30f98e0263fabda3701705ae436efa01",
+      "size_bytes": 957
+    },
+    "404.html": {
+      "sha256": "c2b83d156bae8ef0c33c9dec72a12d9d30ec8de754d71437a68677a9dd32b90b",
+      "size_bytes": 758
+    },
+    "divulgacion-comercial.html": {
+      "sha256": "cf5501c0854c7a5a3a5211e7348a07ee5601cb57ca6c9beae72a71763cd58dfa",
+      "size_bytes": 2303
+    },
+    ".gitignore": {
+      "sha256": "f68f52487c4b952c58a6d52ece1a4255acc31150430b4b888a0d8ee9d79dd8d7",
+      "size_bytes": 31
+    },
+    "index-v13-backup.html": {
+      "sha256": "93d36d551171541eb03dea706594888e18307b7734d28f5eeb76d92f4cd4987a",
+      "size_bytes": 104476
+    },
+    "index.html": {
+      "sha256": "cc5baba4ca8aa404df25cf6a9d9fdaa51a1aaec394e4ff8f92b5efa31f3719d8",
+      "size_bytes": 48361
+    },
+    "QA-REPORT.md": {
+      "sha256": "e74f8e782084b32af66bff8571c443d7a05d12f189dd9b38670dd8fc47bafeab",
+      "size_bytes": 1359
+    },
+    "README.md": {
+      "sha256": "4804a9c3b8695f4b4128514f564677965c3d887cbe3680a97d02197de84f1c3f",
+      "size_bytes": 1399
+    },
+    "sitemap.xml": {
+      "sha256": "6130597835553b01fae56c459e8355e6dab67aa228b4efb72f78156993131a80",
+      "size_bytes": 507
+    },
+    "politica-editorial.html": {
+      "sha256": "9162ffe622789a57fc49fdb3c64dfaa2650bced4d839f18c94f7f5a1e73d396d",
+      "size_bytes": 2576
+    },
+    "package.json": {
+      "sha256": "cf4d71733b8bfa3c1d91282609f45a0d299a8e8e8ab778770d007bbda7c2fc4e",
+      "size_bytes": 179
+    },
+    "scripts/preflight.mjs": {
+      "sha256": "1ce0c102d8aa672268a4916fe14d80f6bb3e596aae1f08f44a761b21b1972109",
+      "size_bytes": 3319
+    },
+    "assets/css/styles.css": {
+      "sha256": "854cf93389dd15dc0503577c028e4f174f50327d0552a92eea1be2a2c3fb95bd",
+      "size_bytes": 24144
+    },
+    "assets/icons/apple-touch-icon.png": {
+      "sha256": "624518a3b2765017e8b9c3b138da11d2eb75ce5500f1883acc0543f9fc15935b",
+      "size_bytes": 1345
+    },
+    "assets/icons/favicon.svg": {
+      "sha256": "fcb6ced3add37fbdc59d47642583b94b262ce5e7359ceb5d0f82e27f98316f21",
+      "size_bytes": 778
+    },
+    "assets/icons/logo-fallback.svg": {
+      "sha256": "fcb6ced3add37fbdc59d47642583b94b262ce5e7359ceb5d0f82e27f98316f21",
+      "size_bytes": 778
+    },
+    "assets/js/config.js": {
+      "sha256": "30d6bff3da5f7d9f87d716ffcd428449f99496d22ae25d3e7feb0ea215277037",
+      "size_bytes": 174
+    },
+    "assets/js/app.js": {
+      "sha256": "45e79a75b376d78e6e32ae126c21aac74300a2f79131c8539368aee445e90650",
+      "size_bytes": 9611
+    },
+    "assets/images/image-fallback.svg": {
+      "sha256": "10c6ea83fafe80aee3613f9bfc45a0133d3650925c0032399d6405a1a0231db2",
+      "size_bytes": 1180
     }
-  ]
+  }
 }

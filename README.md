@@ -1,44 +1,66 @@
-# Mundo Biohack — APEX V2
+# Mundo Biohack — proyecto estático para GitHub y Vercel
 
-Versión estática lista para un repo nuevo y deploy en Vercel.
+## Despliegue
 
-## Deploy simple
+1. Subir el contenido completo de esta carpeta a un repositorio de GitHub.
+2. Importar el repositorio desde Vercel.
+3. Framework preset: **Other**.
+4. Build command: `npm run build`.
+5. Output directory: `.`.
+6. Publicar.
 
-1. Crear un repositorio nuevo en GitHub.
-2. Subir **el contenido de esta carpeta** a la raíz del repo.
-3. En Vercel: Add New → Project → importar el repo.
-4. Deploy. No requiere variables de entorno ni framework.
+## Configuración real
 
-## Stack
+Editar solamente:
 
-- HTML
-- CSS
-- JavaScript
-- Sin framework
-- Sin dependencias de runtime
-- Build/preflight: `npm run build`
+`assets/js/config.js`
 
-## Datos reales pendientes
-
-Editar `assets/js/config.js` cuando estén disponibles:
+Campos disponibles:
 
 - `communityWhatsAppUrl`
 - `salesWhatsAppUrl`
 - `instagramUrl`
 - `youtubeUrl`
-- `logoUrl` (opcional; hoy usa el logo local)
+- `logoUrl`
 - `legalContact`
 
-Los CTA correspondientes permanecen ocultos mientras esos campos estén vacíos. No hay datos inventados.
+Cuando una URL está vacía, su enlace no aparece en la interfaz ni queda en el orden de tabulación.
 
-## Dirección de producto
+## Metadatos
 
-La homepage ya no muestra secciones futuras ni módulos "Próximamente". Prioriza:
+La imagen principal actual se utiliza como Open Graph y Twitter Card.
+Cuando exista un asset definitivo, reemplazar las dos URLs dentro de `index.html`.
 
-1. Propuesta de valor
-2. Recursos reales para empezar
-3. Temas que cubre la marca
-4. Productos presentados con transparencia
-5. Fuentes reales y curadas
-6. Criterio editorial
-7. Legal / transparencia
+## Verificación
+
+Ejecutar:
+
+```bash
+npm run preflight
+```
+
+El despliegue se bloquea si detecta variables sin resolver, enlaces rotos, IDs duplicados,
+imágenes sin `alt`, botones sin nombre accesible, URLs inseguras o textos internos.
+
+## Archivos principales
+
+- `index.html`
+- `assets/css/styles.css`
+- `assets/js/config.js`
+- `assets/js/app.js`
+- `scripts/preflight.mjs`
+- páginas legales
+- `robots.txt`
+- `sitemap.xml`
+- `vercel.json`
+
+## Assets externos
+
+Las imágenes editoriales y de productos continúan cargándose desde Imgur.
+Las miniaturas audiovisuales cargan desde YouTube.
+Cada imagen externa tiene un fallback local.
+
+
+## V15 — sistema simétrico
+
+Esta versión normaliza alturas, proporciones y grillas. La selección editorial utiliza una pieza principal y cuatro piezas secundarias en una matriz 2x2. Los productos usan una composición 2–1–1 de igual altura en desktop.
