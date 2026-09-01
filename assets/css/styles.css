@@ -694,3 +694,88 @@ body{background:radial-gradient(circle at 78% 5%,rgba(0,104,255,.075),transparen
   .hero-side-card{height:165px;min-height:165px}
   .topics-grid,.clips-track{grid-auto-columns:82vw}
 }
+
+/* =========================================================
+   V15.2 — DAVID STRUCTURAL PASS
+   No redesign: same canonical language, less noise.
+   ========================================================= */
+
+/* Three editorial doors instead of six: stronger scan and larger cards without gigantism. */
+#en-portada .cover-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+/* Six topics resolve cleanly as a 3x2 matrix instead of a 5+1 orphan row. */
+#explorar-temas .topics-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+/* TV keeps the canonical composition but stops behaving like a second hero. */
+#mundo-biohack-tv .tv-feature,
+#mundo-biohack-tv .tv-feature__copy,
+#mundo-biohack-tv .tv-feature__visual{
+  min-height:300px;
+}
+#mundo-biohack-tv .tv-feature__copy{
+  padding:clamp(22px,2.6vw,34px);
+}
+#mundo-biohack-tv .tv-feature__copy h2{
+  font-size:clamp(30px,3vw,43px);
+  margin-top:10px;
+}
+#mundo-biohack-tv .tv-feature__copy p{
+  margin-bottom:15px;
+}
+
+/* Footer: same identity, less administrative weight. */
+.site-footer{
+  padding-top:34px;
+}
+.footer-bottom{
+  margin-top:20px;
+  padding-top:14px;
+}
+
+@media (max-width:980px){
+  #explorar-temas .topics-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  #mundo-biohack-tv .tv-feature,
+  #mundo-biohack-tv .tv-feature__copy,
+  #mundo-biohack-tv .tv-feature__visual{
+    min-height:280px;
+  }
+}
+
+@media (max-width:720px){
+  #en-portada .cover-grid{
+    grid-template-columns:1fr;
+  }
+  #explorar-temas .topics-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-auto-flow:initial;
+    grid-auto-columns:auto;
+    overflow:visible;
+  }
+  #explorar-temas .topic-card{
+    width:auto;
+    min-width:0;
+  }
+  #mundo-biohack-tv .tv-feature{
+    min-height:0;
+  }
+  #mundo-biohack-tv .tv-feature__copy,
+  #mundo-biohack-tv .tv-feature__visual{
+    min-height:0;
+  }
+  #mundo-biohack-tv .tv-feature__visual{
+    aspect-ratio:16/10;
+  }
+}
+
+@media (max-width:480px){
+  #explorar-temas .topics-grid{
+    grid-template-columns:1fr;
+  }
+}
