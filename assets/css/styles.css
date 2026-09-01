@@ -488,441 +488,102 @@ dialog::backdrop{background:rgba(0,3,10,.78);backdrop-filter:blur(8px)}
 
 
 
-/* ==========================================================
-   V15.1 — CANONICAL REFINE
-   Conserva la arquitectura V15 y sus imágenes de Imgur.
-   Ajusta escala, ritmo y responsive sin rediseñar la web.
-   ========================================================== */
-
-:root{
-  --container:min(1280px,calc(100vw - 48px));
-  --header-height:78px;
-  --section-space:64px;
-  --card-gap:14px;
-  --cover-image-height:172px;
-  --topic-image-height:122px;
-}
-
-body{background:radial-gradient(circle at 78% 5%,rgba(0,104,255,.075),transparent 26%),linear-gradient(180deg,#03070f,#050a13 50%,#03070f)}
-.section-block{padding:var(--section-space) 0}
-.section-title{font-size:clamp(30px,3vw,44px)}
-.section-lead{font-size:15px;line-height:1.6}
-.section-head{margin-bottom:24px}
-
-/* Header: misma identidad, una escala más contenida. */
-.brand-logo{width:44px;height:44px}
-.brand-wordmark{font-size:19px}
-.desktop-nav{gap:clamp(16px,1.8vw,28px)}
-.desktop-nav a{font-size:13px}
-.search-open{min-width:180px;height:42px}
-
-/* Hero: conserva composición canónica, evita ocupar casi todo el viewport. */
-.hero-section{padding:28px 0 22px}
-.hero-grid{grid-template-columns:minmax(0,1.82fr) minmax(320px,.88fr);gap:14px}
-.hero-main,.hero-side{height:520px}
-.hero-copy{min-height:520px;width:min(59%,590px);padding:clamp(30px,3.4vw,46px)}
-.hero-copy h1{margin:14px 0 16px;font-size:clamp(42px,4.5vw,66px);line-height:1;letter-spacing:-.055em}
-.hero-copy p{max-width:550px;margin-bottom:21px;font-size:clamp(15px,1.2vw,18px)}
-.hero-side{gap:12px}
-.hero-side-card{padding:18px}
-.hero-side-card h2{font-size:20px}
-.hero-side-card p{font-size:12px}
-
-/* Tarjetas: mismo sistema, mejor densidad y lectura. */
-.cover-section{padding:20px 0 var(--section-space)}
-.cover-grid{gap:14px}
-.cover-card{min-height:310px;grid-template-rows:var(--cover-image-height) 1fr}
-.cover-card .media-card__image{height:var(--cover-image-height)}
-.cover-card .media-card__body{min-height:138px;padding:15px}
-.cover-card h3{min-height:auto;font-size:18px}
-.cover-card p{-webkit-line-clamp:3}
-.media-card,.future-format,.topic-card,.selection-card{transition:transform 180ms var(--ease),border-color 180ms ease,box-shadow 180ms ease}
-.media-card:hover,.future-format:hover,.topic-card:hover,.selection-card:hover{border-color:rgba(56,139,255,.45);box-shadow:0 16px 42px rgba(0,0,0,.2)}
-
-/* Productos: siguen siendo protagonistas, sin gigantismo. */
-.products-layout{grid-template-columns:minmax(0,1.7fr) repeat(2,minmax(0,1fr));grid-template-rows:455px;gap:14px}
-.product-feature,.product-secondary{height:455px}
-.product-feature .product-copy{width:57%;padding:30px}
-.product-copy h3{font-size:clamp(30px,3vw,44px)}
-.product-secondary .product-copy{padding:20px}
-.product-secondary .product-copy h3{font-size:23px}
-.product-secondary .product-visual{inset:8px 6px 136px}
-
-/* TV y módulos futuros: más editoriales, menos altos. */
-.tv-feature{min-height:350px}
-.tv-feature__copy,.tv-feature__visual{min-height:350px}
-.tv-feature__copy{padding:clamp(26px,3.2vw,42px)}
-.tv-feature__copy h2{font-size:clamp(32px,3.5vw,48px)}
-.future-formats{grid-auto-rows:230px}
-.future-format{height:230px;grid-template-rows:138px 1fr}
-.future-format img{height:138px}
-
-/* Temas y clips: mantienen la lógica visual original, con proporción más natural. */
-.topics-grid{grid-auto-rows:220px}
-.topic-card{height:220px;grid-template-rows:var(--topic-image-height) 1fr}
-.topic-card .media-card__image{height:var(--topic-image-height)}
-.topic-card h3{font-size:17px}
-.topic-card p{font-size:12px}
-.clips-track{gap:14px}
-.clip-card,.clip-card>img{height:342px;min-height:342px}
-
-/* Selección editorial: conserva 1 + 4, reduce altura y aire muerto. */
-.selection-layout{min-height:540px;gap:14px}
-.selection-lead{height:540px;grid-template-rows:300px 1fr}
-.selection-lead__image{height:300px}
-.selection-lead__body{padding:20px}
-.selection-grid{height:540px;gap:14px}
-.selection-card{grid-template-rows:128px 1fr}
-.selection-card .media-card__image{height:128px}
-.selection-card .media-card__body{padding:13px}
-
-/* Comunidad y footer: mismos contenidos, menor peso visual. */
-.community-shell{min-height:280px}
-.community-main{min-height:280px;padding:clamp(26px,3vw,42px)}
-.community-panel{padding:22px}
-.site-footer{padding-top:40px}
-
-@media(max-width:1180px){
-  :root{--container:calc(100vw - 36px)}
-  .hero-grid{grid-template-columns:minmax(0,1.55fr) minmax(300px,.85fr)}
-  .hero-main,.hero-side{height:500px}
-  .hero-copy{min-height:500px}
-  .cover-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .products-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:400px 360px}
-  .product-feature{grid-column:1/-1;height:400px}
-  .product-secondary{height:360px}
-  .product-feature .product-copy{width:50%}
-}
-
-@media(max-width:980px){
-  :root{--container:calc(100vw - 28px);--header-height:72px}
-  .hero-grid{grid-template-columns:1fr}
-  .hero-main,.hero-side{height:auto}
-  .hero-main{min-height:500px}
-  .hero-copy{min-height:500px;width:100%;justify-content:flex-end;padding:30px}
-  .hero-copy h1{font-size:clamp(42px,7.2vw,62px)}
-  .hero-main__shade{background:linear-gradient(180deg,rgba(2,7,14,.35) 0%,rgba(2,7,14,.64) 42%,rgba(2,7,14,.97) 82%)}
-  .hero-main__image{object-position:center 36%}
-  .hero-side{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .hero-side-card{height:210px}
-  .products-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:390px 340px}
-  .product-feature{height:390px}
-  .product-secondary{height:340px}
-  .future-formats{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:215px}
-  .future-format{height:215px;grid-template-rows:125px 1fr}
-  .future-format img{height:125px}
-  .topics-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .selection-layout{grid-template-columns:1fr;min-height:0}
-  .selection-lead{height:auto;min-height:480px;grid-template-rows:270px 1fr}
-  .selection-lead__image{height:270px}
-  .selection-grid{height:auto;grid-template-rows:repeat(2,250px)}
-  .selection-card{grid-template-rows:120px 1fr}
-}
-
-@media(max-width:720px){
-  :root{--container:calc(100vw - 24px);--header-height:66px;--section-space:46px;--cover-image-height:176px}
-  .site-header{height:var(--header-height)}
-  .brand{gap:9px}
-  .brand-logo{width:38px;height:38px}
-  .brand-wordmark{font-size:15px;line-height:.92}
-  .menu-button{width:40px;height:40px}
-  .mobile-nav{inset:var(--header-height) 0 auto 0;padding:14px 12px 18px}
-  .mobile-nav a,.mobile-nav button{min-height:46px}
-  .section-head,.carousel-head{margin-bottom:20px}
-  .section-title{font-size:clamp(28px,8.8vw,38px)}
-  .section-lead{font-size:14px}
-
-  .hero-section{padding:12px 0 18px}
-  .hero-main{min-height:470px;border-radius:20px}
-  .hero-copy{min-height:470px;justify-content:flex-end;padding:22px 20px}
-  .hero-copy h1{margin:10px 0 12px;font-size:clamp(36px,10.5vw,48px);line-height:1.02}
-  .hero-copy p{margin-bottom:18px;font-size:15px;line-height:1.48}
-  .hero-main__image{object-position:center 30%}
-  .hero-main__shade{background:linear-gradient(180deg,rgba(2,7,14,.18),rgba(2,7,14,.5) 38%,rgba(2,7,14,.98) 76%)}
-  .hero-actions{gap:9px}
-  .primary,.secondary-btn,.community-btn{min-height:46px}
-  .hero-side{grid-template-columns:1fr;gap:10px}
-  .hero-side-card{height:175px;min-height:175px;padding:16px}
-  .hero-side-card h2{max-width:88%;font-size:18px}
-  .hero-side-card p{max-width:88%;font-size:12px}
-
-  .cover-grid{grid-template-columns:1fr;gap:12px}
-  .cover-card{min-height:0;grid-template-rows:var(--cover-image-height) auto}
-  .cover-card .media-card__body{min-height:0}
-
-  .products-layout{display:grid;grid-template-columns:1fr;grid-template-rows:none;gap:12px}
-  .product-feature,.product-secondary{height:390px}
-  .product-feature{grid-column:auto}
-  .product-feature .product-copy,.product-secondary .product-copy{width:100%;padding:20px}
-  .product-feature .product-visual,.product-secondary .product-visual{inset:6px 6px 130px}
-  .product-feature .product-overlay,.product-secondary .product-overlay{background:linear-gradient(180deg,rgba(3,9,18,.03) 10%,rgba(3,9,18,.55) 47%,rgba(3,9,18,.99) 78%)}
-  .product-copy h3{font-size:30px}
-  .product-secondary .product-copy h3{font-size:25px}
-
-  .tv-feature{grid-template-columns:1fr;min-height:0}
-  .tv-feature__copy{min-height:0;padding:24px 20px}
-  .tv-feature__visual{height:230px;min-height:230px}
-  .future-formats{grid-template-columns:1fr;grid-auto-rows:auto;gap:10px}
-  .future-format{height:auto;min-height:210px;grid-template-rows:125px auto}
-  .future-format img{height:125px}
-
-  .topics-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(205px,76vw);grid-template-columns:none;grid-auto-rows:210px;overflow-x:auto;padding:0 2px 8px;scroll-snap-type:x mandatory;scrollbar-width:none}
-  .topic-card{height:210px;scroll-snap-align:start}
-  .clips-track{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:minmax(210px,76vw);overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;scrollbar-width:none}
-  .clip-card,.clip-card>img{height:320px;min-height:320px}
-
-  .selection-lead{min-height:0;grid-template-rows:220px auto}
-  .selection-lead__image{height:220px}
-  .selection-grid{grid-template-columns:1fr;grid-template-rows:none;gap:10px}
-  .selection-card{min-height:245px;grid-template-rows:125px auto}
-
-  .community-shell{grid-template-columns:1fr;min-height:0}
-  .community-main{min-height:0;padding:26px 20px}
-  .community-side{grid-template-columns:1fr;grid-template-rows:none;border-left:0;border-top:1px solid var(--line)}
-  .community-panel{border-right:0;border-bottom:1px solid var(--line);padding:18px 20px}
-  .community-panel:last-child{border-bottom:0}
-  .footer-grid{grid-template-columns:1fr;gap:20px}
-  .footer-brand p{font-size:13px}
-}
-
-@media(max-width:390px){
-  :root{--container:calc(100vw - 18px)}
-  .brand-wordmark{font-size:14px}
-  .hero-main{min-height:445px}
-  .hero-copy{min-height:445px;padding:20px 17px}
-  .hero-copy h1{font-size:36px}
-  .hero-side-card{height:165px;min-height:165px}
-  .topics-grid,.clips-track{grid-auto-columns:82vw}
-}
-
 /* =========================================================
-   V15.2 — DAVID STRUCTURAL PASS
-   No redesign: same canonical language, less noise.
+   V15.4 — DAVID ROUTES + SALES
+   Reorganización, rutas temáticas, CTAs funcionales y poda.
    ========================================================= */
 
-/* Three editorial doors instead of six: stronger scan and larger cards without gigantism. */
-#en-portada .cover-grid{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-}
+html{scroll-padding-top:76px}
+.section-block{padding-block:clamp(54px,6vw,82px)}
+.cover-section{padding-bottom:clamp(54px,6vw,82px)}
+.section-head{margin-bottom:22px}
+.section-lead{max-width:760px}
+.section-actions{display:flex;gap:10px;margin-top:20px}
+.section-actions--center{justify-content:center}
 
-/* Six topics resolve cleanly as a 3x2 matrix instead of a 5+1 orphan row. */
-#explorar-temas .topics-grid{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-}
+/* Orden visual más sereno: 3 x 2 real en desktop */
+.topics-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;grid-auto-flow:row!important;grid-auto-rows:minmax(205px,1fr)!important;overflow:visible!important;padding-bottom:0!important;gap:14px!important}
+.topic-card--button{appearance:none;-webkit-appearance:none;width:100%;padding:0;border:1px solid var(--line);border-radius:var(--radius);background:#07111f;color:inherit;text-align:left;font:inherit;cursor:pointer;overflow:hidden;scroll-snap-align:unset}
+.topic-card--button:hover{transform:translateY(-2px);border-color:rgba(77,166,255,.46);box-shadow:0 18px 44px rgba(0,0,0,.22)}
+.topic-card--button:focus-visible{outline:2px solid var(--blue-2);outline-offset:3px}
+.topic-card--button .media-card__image{height:132px}
+.topic-card--button .media-card__body{padding:13px 14px 15px}
+.topic-card--button .media-card__body:after{content:'Explorar →';display:block;margin-top:9px;color:var(--blue-2);font-size:11px;font-weight:800;letter-spacing:.03em}
 
-/* TV keeps the canonical composition but stops behaving like a second hero. */
-#mundo-biohack-tv .tv-feature,
-#mundo-biohack-tv .tv-feature__copy,
-#mundo-biohack-tv .tv-feature__visual{
-  min-height:300px;
-}
-#mundo-biohack-tv .tv-feature__copy{
-  padding:clamp(22px,2.6vw,34px);
-}
-#mundo-biohack-tv .tv-feature__copy h2{
-  font-size:clamp(30px,3vw,43px);
-  margin-top:10px;
-}
-#mundo-biohack-tv .tv-feature__copy p{
-  margin-bottom:15px;
-}
+/* Productos: menos chips, CTA siempre utilizable */
+.product-info-btn{cursor:pointer}
+.product-tags{gap:6px;margin-bottom:14px}
+.product-copy p{max-width:520px}
+.products-section{background:radial-gradient(circle at 82% 16%,rgba(23,131,255,.13),transparent 30%),linear-gradient(180deg,#030b15,#06111f)}
 
-/* Footer: same identity, less administrative weight. */
-.site-footer{
-  padding-top:34px;
-}
-.footer-bottom{
-  margin-top:20px;
-  padding-top:14px;
-}
+/* Editorial: autoridad sin muro visual */
+.selection-layout{grid-template-columns:1.08fr .92fr;min-height:0}
+.selection-grid{grid-template-columns:1fr 1fr;align-content:start}
+.selection-grid .selection-card:first-child{grid-column:1/-1}
+.selection-grid .media-card__image{height:150px}
+.selection-lead__body,.selection-card .media-card__body{padding:16px}
+.source-note{margin-top:13px}
+
+/* TV deja de competir con el hero */
+.tv-feature{min-height:300px}
+.tv-feature__copy{padding:30px}
+.tv-feature__copy h2{font-size:clamp(34px,4.2vw,54px)}
+.tv-feature__visual{min-height:300px}
+.future-formats{grid-auto-rows:205px}
+.future-format img{height:118px}
+.tv-section-cta{margin-top:18px}
+
+/* Comunidad siempre ofrece una salida funcional */
+.community-shell{min-height:270px}
+.community-main{padding:clamp(24px,3vw,38px)}
+.community-side{min-height:100%}
+.community-section .hero-actions{margin-top:22px}
+
+/* Dialogs reutilizables */
+.info-dialog{width:min(620px,calc(100% - 28px));max-height:min(82vh,760px);padding:0;border:1px solid rgba(86,171,255,.28);border-radius:22px;background:#06111f;color:var(--text);box-shadow:0 32px 100px rgba(0,0,0,.58)}
+.info-dialog::backdrop{background:rgba(0,5,12,.76);backdrop-filter:blur(6px)}
+.info-dialog__panel{position:relative;padding:clamp(24px,4vw,38px)}
+.info-dialog__panel h2{margin:10px 44px 10px 0;font-size:clamp(29px,4vw,42px);line-height:1.02}
+.info-dialog__panel>p{color:var(--muted);line-height:1.65}
+.info-dialog .dialog-close{position:absolute;top:14px;right:14px}
+.dialog-source-card{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#08192a}
+.dialog-source-card span{color:var(--muted);font-size:13px;line-height:1.45}
+.product-dialog-points{display:grid;gap:10px;margin:20px 0;padding:0;list-style:none}
+.product-dialog-points li{padding:12px 14px;border:1px solid var(--line);border-radius:13px;background:#081522;color:#d8e2ef;line-height:1.5}
+.dialog-disclosure{margin-top:18px;padding-top:15px;border-top:1px solid var(--line);font-size:12px!important;color:var(--muted-2)!important}
+
+/* Footer DAVID */
+.site-footer{padding-top:38px}
+.footer-grid{gap:22px}
+.footer-brand p{max-width:360px}
+.footer-bottom{margin-top:22px}
 
 @media (max-width:980px){
-  #explorar-temas .topics-grid{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-  #mundo-biohack-tv .tv-feature,
-  #mundo-biohack-tv .tv-feature__copy,
-  #mundo-biohack-tv .tv-feature__visual{
-    min-height:280px;
-  }
+  .topics-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:minmax(205px,1fr)!important}
+  .selection-layout{grid-template-columns:1fr}
+  .selection-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .selection-grid .selection-card:first-child{grid-column:auto}
+  .selection-grid .media-card__image{height:155px}
+  .future-formats{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:190px}
 }
 
 @media (max-width:720px){
-  #en-portada .cover-grid{
-    grid-template-columns:1fr;
-  }
-  #explorar-temas .topics-grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    grid-auto-flow:initial;
-    grid-auto-columns:auto;
-    overflow:visible;
-  }
-  #explorar-temas .topic-card{
-    width:auto;
-    min-width:0;
-  }
-  #mundo-biohack-tv .tv-feature{
-    min-height:0;
-  }
-  #mundo-biohack-tv .tv-feature__copy,
-  #mundo-biohack-tv .tv-feature__visual{
-    min-height:0;
-  }
-  #mundo-biohack-tv .tv-feature__visual{
-    aspect-ratio:16/10;
-  }
-}
-
-@media (max-width:480px){
-  #explorar-temas .topics-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-/* =========================================================
-   V15.3 — DAVID VISUAL + CONVERSION
-   Same canonical identity. Clearer hierarchy, lower density.
-   ========================================================= */
-
-/* Hero: side cards become visual signposts, not mini articles. */
-.hero-side-card__content p{display:none}
-.hero-side-card__content{max-width:92%}
-.hero-side-card h2{margin-bottom:0}
-.hero-side-card .content-status,
-.hero-side-card .external-badge,
-.hero-side-card .product-tag{margin-bottom:8px}
-
-/* Products: one action language across the ecosystem. */
-.product-actions{margin-top:14px}
-.product-actions .secondary-btn{min-width:132px}
-
-/* Topics: six choices, always a clean 3x2 matrix on desktop. */
-#explorar-temas .topics-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  grid-auto-flow:row;
-  grid-auto-columns:auto;
-}
-
-/* TV: keep the module, reduce its visual dominance by ~20%. */
-#mundo-biohack-tv .tv-feature,
-#mundo-biohack-tv .tv-feature__copy,
-#mundo-biohack-tv .tv-feature__visual{
-  min-height:250px;
-}
-#mundo-biohack-tv .tv-feature__copy{padding:clamp(20px,2.3vw,30px)}
-#mundo-biohack-tv .tv-feature__copy h2{font-size:clamp(28px,2.7vw,39px)}
-#mundo-biohack-tv .future-formats{
-  grid-auto-rows:185px;
-  gap:12px;
-  margin-top:14px;
-}
-#mundo-biohack-tv .future-format{
-  height:185px;
-  grid-template-rows:105px 1fr;
-}
-#mundo-biohack-tv .future-format img{height:105px}
-#mundo-biohack-tv .future-format div{padding:12px 14px}
-#mundo-biohack-tv .future-format h3{font-size:15px}
-#mundo-biohack-tv .future-format p{font-size:11px}
-
-/* Editorial: one anchor + three concise supporting sources. */
-#seleccion-editorial .selection-layout{
-  grid-template-columns:minmax(0,1.12fr) minmax(340px,.88fr);
-  min-height:520px;
-}
-#seleccion-editorial .selection-lead{
-  height:520px;
-  grid-template-rows:290px 1fr;
-}
-#seleccion-editorial .selection-lead__image{height:290px}
-#seleccion-editorial .selection-grid{
-  height:520px;
-  grid-template-columns:1fr;
-  grid-template-rows:repeat(3,minmax(0,1fr));
-  gap:12px;
-}
-#seleccion-editorial .selection-card{
-  display:grid;
-  height:100%;
-  min-height:0;
-  grid-template-columns:145px 1fr;
-  grid-template-rows:1fr;
-}
-#seleccion-editorial .selection-card .media-card__image{
-  width:145px;
-  height:100%;
-  min-height:0;
-  aspect-ratio:auto;
-}
-#seleccion-editorial .selection-card .media-card__body{
-  justify-content:center;
-  padding:12px 14px;
-}
-#seleccion-editorial .selection-card h3{
-  min-height:0;
-  margin:6px 0 5px;
-  font-size:15px;
-}
-#seleccion-editorial .selection-card .original-title,
-#seleccion-editorial .selection-card p:not(.original-title){
-  font-size:11px;
-}
-
-/* Community only earns homepage space when a real action exists. */
-[data-config-section="community"][hidden]{display:none!important}
-
-/* Footer: same scale, better legibility and scanning. */
-.site-footer{padding-top:38px}
-.footer-grid{gap:clamp(24px,3vw,42px)}
-.footer-brand p{max-width:360px;font-size:14px;line-height:1.6}
-.footer-col h2{font-size:13px;letter-spacing:.08em}
-.footer-col a,.footer-col span{font-size:14px;line-height:1.5}
-
-@media(max-width:980px){
-  #explorar-temas .topics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  #mundo-biohack-tv .tv-feature,
-  #mundo-biohack-tv .tv-feature__copy,
-  #mundo-biohack-tv .tv-feature__visual{min-height:230px}
-  #seleccion-editorial .selection-layout{grid-template-columns:1fr;min-height:0}
-  #seleccion-editorial .selection-lead{height:auto;min-height:450px;grid-template-rows:250px 1fr}
-  #seleccion-editorial .selection-lead__image{height:250px}
-  #seleccion-editorial .selection-grid{
-    height:auto;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    grid-template-rows:1fr;
-  }
-  #seleccion-editorial .selection-card{
-    min-height:250px;
-    grid-template-columns:1fr;
-    grid-template-rows:115px 1fr;
-  }
-  #seleccion-editorial .selection-card .media-card__image{width:100%;height:115px}
-}
-
-@media(max-width:720px){
-  #explorar-temas .topics-grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    grid-auto-flow:row;
-    grid-auto-columns:auto;
-    overflow:visible;
-  }
-  #mundo-biohack-tv .tv-feature__copy{padding:22px 20px}
-  #mundo-biohack-tv .tv-feature__visual{height:210px;min-height:210px}
-  #mundo-biohack-tv .future-formats{grid-template-columns:1fr;grid-auto-rows:auto}
-  #mundo-biohack-tv .future-format{height:auto;min-height:175px;grid-template-rows:100px auto}
-  #mundo-biohack-tv .future-format img{height:100px}
-  #seleccion-editorial .selection-grid{grid-template-columns:1fr;gap:10px}
-  #seleccion-editorial .selection-card{
-    min-height:220px;
-    grid-template-columns:1fr;
-    grid-template-rows:110px auto;
-  }
-  #seleccion-editorial .selection-card .media-card__image{height:110px}
-}
-
-@media(max-width:480px){
-  #explorar-temas .topics-grid{grid-template-columns:1fr}
+  html{scroll-padding-top:64px}
+  .section-block,.cover-section{padding-block:46px}
+  .section-head{margin-bottom:18px}
+  .topics-grid{grid-template-columns:1fr!important;grid-auto-rows:auto!important}
+  .topic-card--button{display:grid;grid-template-columns:126px 1fr;min-height:128px}
+  .topic-card--button .media-card__image{height:100%;min-height:128px}
+  .topic-card--button .media-card__body{align-self:center}
+  .products-layout{grid-template-columns:1fr!important}
+  .product-feature,.product-secondary{height:420px}
+  .selection-grid{grid-template-columns:1fr}
+  .selection-grid .media-card__image{height:190px}
+  .future-formats{grid-template-columns:1fr;grid-auto-rows:auto}
+  .future-format{display:grid;grid-template-columns:128px 1fr;min-height:130px}
+  .future-format img{height:100%;min-height:130px}
+  .dialog-source-card{align-items:stretch;flex-direction:column}
+  .dialog-source-card .primary{width:100%;text-align:center}
+  .community-section .hero-actions{display:grid}
+  .community-section .hero-actions a{width:100%;text-align:center;justify-content:center}
 }

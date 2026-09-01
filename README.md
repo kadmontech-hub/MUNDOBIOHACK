@@ -64,7 +64,3 @@ Cada imagen externa tiene un fallback local.
 ## V15 — sistema simétrico
 
 Esta versión normaliza alturas, proporciones y grillas. La selección editorial utiliza una pieza principal y cuatro piezas secundarias en una matriz 2x2. Los productos usan una composición 2–1–1 de igual altura en desktop.
-
-## V15.3 — DAVID Visual + Conversion
-
-Mantiene la arquitectura V15.2 y aplica refinamiento quirúrgico de jerarquía: hero lateral más simple, temas 3×2, TV más compacta, selección editorial 1+3, microcopy de productos más comercial sin claims médicos, comunidad condicionada a links reales y footer más legible.

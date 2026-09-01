@@ -52,15 +52,6 @@
     wrapper.hidden = !config.legalContact;
   });
 
-  document.querySelectorAll('[data-config-section="community"]').forEach((section) => {
-    const hasRealAction = Boolean(
-      config.communityWhatsAppUrl ||
-      config.salesWhatsAppUrl ||
-      config.instagramUrl
-    );
-    section.hidden = !hasRealAction;
-  });
-
   if (config.logoUrl) {
     document.querySelectorAll("[data-logo-image]").forEach((image) => {
       image.src = config.logoUrl;
@@ -287,6 +278,136 @@
   window.addEventListener("load", updateClipControls);
   window.addEventListener("resize", updateClipControls);
   updateClipControls();
+
+
+  // V15.4 — rutas temáticas funcionales
+  const themeDialog = document.querySelector("[data-theme-dialog]");
+  const themeRoutes = {
+    sueno: {
+      title: "Sueño",
+      description: "Para empezar por sueño, priorizamos una explicación extensa sobre ritmos, hábitos y arquitectura del descanso.",
+      source: "Andrew Huberman · video externo",
+      url: "https://www.youtube.com/watch?v=JaRGJVrJBQ8"
+    },
+    energia: {
+      title: "Energía",
+      description: "Una puerta de entrada general para pensar movimiento, hábitos cotidianos y energía sin buscar una solución mágica.",
+      source: "Harvard Health · artículo externo",
+      url: "https://www.health.harvard.edu/healthy-aging-and-longevity/ways-to-maximize-your-energy"
+    },
+    rendimiento: {
+      title: "Rendimiento",
+      description: "Un marco amplio para pensar ejercicio, capacidad física, salud a largo plazo y consistencia.",
+      source: "Peter Attia MD · video externo",
+      url: "https://www.youtube.com/watch?v=B94rbrZkXPI"
+    },
+    longevidad: {
+      title: "Longevidad",
+      description: "Antes de protocolos extremos, conviene entender el marco general de lifespan, healthspan y decisiones sostenibles.",
+      source: "Peter Attia MD · video externo",
+      url: "https://www.youtube.com/watch?v=B94rbrZkXPI"
+    },
+    nutricion: {
+      title: "Nutrición",
+      description: "Una referencia institucional para separar principios generales de alimentación saludable de modas y claims aislados.",
+      source: "OMS · fuente institucional",
+      url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet"
+    },
+    mente: {
+      title: "Mente",
+      description: "Un punto de partida institucional para entender bienestar mental, factores que influyen y enfoques de respuesta.",
+      source: "OMS · fuente institucional",
+      url: "https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response"
+    }
+  };
+
+  document.querySelectorAll("[data-theme-open]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const route = themeRoutes[button.dataset.themeOpen];
+      if (!route || !themeDialog) return;
+      themeDialog.querySelector("[data-theme-title]").textContent = route.title;
+      themeDialog.querySelector("[data-theme-description]").textContent = route.description;
+      themeDialog.querySelector("[data-theme-source]").textContent = route.source;
+      const link = themeDialog.querySelector("[data-theme-link]");
+      link.href = route.url;
+      themeDialog.showModal();
+    });
+  });
+  document.querySelector("[data-theme-close]")?.addEventListener("click", () => themeDialog?.close());
+
+  // V15.4 — información de producto siempre funcional, venta opcional con canal real
+  const productDialog = document.querySelector("[data-product-dialog]");
+  const productDetails = {
+    "plantillas-fir": {
+      title: "Plantillas FIR",
+      summary: "Una herramienta para calzado vinculada a tecnología FIR, presentada desde materiales, formato y experiencia de uso.",
+      points: [
+        "Qué es: una plantilla/accesorio que se integra al calzado.",
+        "Cómo se incorpora: como parte de una rutina cotidiana de movimiento.",
+        "Criterio Mundo Biohack: conocer materiales y uso antes de atribuir beneficios específicos."
+      ],
+      message: "Hola, llegué desde Mundo Biohack y quiero conocer más sobre las Plantillas FIR."
+    },
+    "squeeze-alcaline": {
+      title: "Squeeze Alcaline",
+      summary: "Una botella reutilizable del ecosistema Mundo Biohack, pensada para acompañar la hidratación cotidiana.",
+      points: [
+        "Qué es: una squeeze/botella reutilizable.",
+        "Cómo se incorpora: como herramienta de hidratación diaria.",
+        "Criterio Mundo Biohack: revisar materiales y especificaciones antes de decidir."
+      ],
+      message: "Hola, llegué desde Mundo Biohack y quiero conocer más sobre la Squeeze Alcaline."
+    },
+    "brazalete-fir": {
+      title: "Brazalete FIR",
+      summary: "Un accesorio wearable vinculado a tecnología FIR, presentado desde materiales, formato y experiencia de uso.",
+      points: [
+        "Qué es: un brazalete de uso cotidiano.",
+        "Cómo se incorpora: como accesorio wearable.",
+        "Criterio Mundo Biohack: no atribuimos beneficios terapéuticos no verificados."
+      ],
+      message: "Hola, llegué desde Mundo Biohack y quiero conocer más sobre el Brazalete FIR."
+    }
+  };
+
+  const configureProductDialogLink = (detail) => {
+    const link = productDialog?.querySelector("[data-product-dialog-whatsapp]");
+    if (!link) return;
+    const base = config.salesWhatsAppUrl || config.communityWhatsAppUrl || "";
+    if (!base) {
+      link.hidden = true;
+      link.removeAttribute("href");
+      return;
+    }
+    const separator = base.includes("?") ? "&" : "?";
+    link.href = `${base}${separator}text=${encodeURIComponent(detail.message)}`;
+    link.hidden = false;
+  };
+
+  document.querySelectorAll("[data-product-open]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const detail = productDetails[button.dataset.productOpen];
+      if (!detail || !productDialog) return;
+      productDialog.querySelector("[data-product-title]").textContent = detail.title;
+      productDialog.querySelector("[data-product-summary]").textContent = detail.summary;
+      const list = productDialog.querySelector("[data-product-points]");
+      list.replaceChildren(...detail.points.map((point) => {
+        const li = document.createElement("li");
+        li.textContent = point;
+        return li;
+      }));
+      configureProductDialogLink(detail);
+      productDialog.showModal();
+    });
+  });
+  document.querySelector("[data-product-close]")?.addEventListener("click", () => productDialog?.close());
+
+  [themeDialog, productDialog].forEach((dialog) => {
+    dialog?.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+  });
 
   document.querySelectorAll("[data-track]").forEach((element) => {
     element.addEventListener("click", () => {
