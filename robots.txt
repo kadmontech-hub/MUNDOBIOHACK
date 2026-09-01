@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mundobiohack.com/sitemap.xml
+Sitemap: https://www.mundobiohack.com/sitemap.xml

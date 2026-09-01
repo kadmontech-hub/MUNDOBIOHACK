@@ -2,30 +2,33 @@
 <html lang="es-AR">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#050914">
-  <meta name="generator" content="Mundo Biohack V15 Balanced Grid">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07101f">
+  <meta name="color-scheme" content="dark">
 
-  <title>Mundo Biohack — Portal audiovisual de biohacking en español</title>
-  <meta name="description" content="Videos, ideas, tecnología, experiencias y fuentes para entender mejor el cuerpo, el bienestar y el rendimiento.">
-  <link rel="canonical" href="https://mundobiohack.com/">
+  <title>Mundo Biohack — Biohacking sin humo</title>
+  <meta name="description" content="Biohacking explicado con criterio: sueño, energía, longevidad, nutrición, hábitos, productos y fuentes seleccionadas para separar señal de ruido.">
+  <link rel="canonical" href="https://www.mundobiohack.com/">
 
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
   <meta property="og:site_name" content="Mundo Biohack">
-  <meta property="og:title" content="Mundo Biohack">
-  <meta property="og:description" content="Portal audiovisual de biohacking, tecnología y bienestar en español.">
-  <meta property="og:url" content="https://mundobiohack.com/">
+  <meta property="og:title" content="Mundo Biohack — Biohacking sin humo">
+  <meta property="og:description" content="Entendé qué vale la pena explorar, qué mirar con cautela y dónde están las fuentes.">
+  <meta property="og:url" content="https://www.mundobiohack.com/">
   <meta property="og:image" content="https://i.imgur.com/3PUC6MW.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mundo Biohack">
-  <meta name="twitter:description" content="Portal audiovisual de biohacking, tecnología y bienestar en español.">
+  <meta name="twitter:title" content="Mundo Biohack — Biohacking sin humo">
+  <meta name="twitter:description" content="Entendé qué vale la pena explorar, qué mirar con cautela y dónde están las fuentes.">
   <meta name="twitter:image" content="https://i.imgur.com/3PUC6MW.png">
 
+  <link rel="preconnect" href="https://i.imgur.com" crossorigin>
+  <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <script type="application/ld+json">
@@ -33,15 +36,12 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Mundo Biohack",
-    "url": "https://mundobiohack.com/",
-    "description": "Portal audiovisual de biohacking, tecnología y bienestar en español.",
+    "url": "https://www.mundobiohack.com/",
+    "description": "Portal editorial en español sobre biohacking, hábitos, tecnología, bienestar y rendimiento.",
     "publisher": {
       "@type": "Organization",
       "name": "Mundo Biohack",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://mundobiohack.com/assets/icons/logo-fallback.svg"
-      }
+      "url": "https://www.mundobiohack.com/"
     }
   }
   </script>
@@ -49,733 +49,286 @@
 <body>
   <a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
 
-  <header class="site-header">
+  <header class="site-header" data-site-header>
     <div class="container header-inner">
       <a class="brand" href="#inicio" aria-label="Mundo Biohack, inicio">
-        <img class="brand-logo" src="assets/icons/logo-fallback.svg" width="50" height="50"
-          alt="Mundo Biohack" data-logo-image>
-        <span class="brand-wordmark"><span>MUNDO</span><span>BIOHACK</span></span>
+        <img class="brand-logo" src="assets/icons/logo-fallback.svg" width="46" height="46" alt="" data-logo-image>
+        <span class="brand-wordmark"><strong>MUNDO</strong><strong>BIOHACK</strong></span>
       </a>
 
       <nav class="desktop-nav" aria-label="Navegación principal">
-        <a href="#inicio" aria-current="location">Inicio</a>
-        <a href="#mundo-biohack-tv">Videos</a>
-        <a href="#seleccion-editorial">Artículos</a>
-        <a href="#explorar-temas">Temas</a>
-        <a href="#productos-experiencias">Productos</a>
-        <a href="#comunidad">Comunidad</a>
+        <a href="#empeza">Empezá</a>
+        <a href="#temas">Temas</a>
+        <a href="#productos">Productos</a>
+        <a href="#fuentes">Fuentes</a>
+        <a href="#criterio">Criterio</a>
       </nav>
 
       <div class="header-actions">
-        <button class="search-open" type="button" data-open-search aria-label="Buscar contenido">
-          <span>Buscar contenido…</span>
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
-            <path d="m16.2 16.2 4 4" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </button>
-
-        <a class="community-btn" hidden data-config-link="communityWhatsApp"
-          data-track="header_community_click" target="_blank" rel="noopener noreferrer">Sumarme</a>
-
-        <button class="menu-button" type="button" data-menu-button aria-expanded="false"
-          aria-controls="mobile-nav" aria-label="Abrir menú">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2"/>
-          </svg>
+        <a class="header-cta" hidden data-config-link="communityWhatsApp" target="_blank" rel="noopener noreferrer">Sumarme</a>
+        <button class="menu-button" type="button" data-menu-button aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menú">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-  </header>
 
-  <nav id="mobile-nav" class="mobile-nav" data-mobile-nav data-open="false" aria-label="Navegación mobile">
-    <a href="#inicio">Inicio</a>
-    <a href="#mundo-biohack-tv">Videos</a>
-    <a href="#seleccion-editorial">Artículos</a>
-    <a href="#explorar-temas">Temas</a>
-    <a href="#productos-experiencias">Productos</a>
-    <a href="#comunidad">Comunidad</a>
-    <button class="search-open" type="button" data-open-search>Buscar contenido</button>
-    <a class="community-btn" hidden data-config-link="communityWhatsApp"
-      data-track="header_community_click" target="_blank" rel="noopener noreferrer">Sumarme a la comunidad</a>
-  </nav>
+    <nav id="mobile-nav" class="mobile-nav" data-mobile-nav data-open="false" aria-label="Navegación mobile">
+      <a href="#empeza">Empezá por acá</a>
+      <a href="#temas">Qué exploramos</a>
+      <a href="#productos">Productos</a>
+      <a href="#fuentes">Selección editorial</a>
+      <a href="#criterio">Nuestro criterio</a>
+      <a hidden data-config-link="communityWhatsApp" target="_blank" rel="noopener noreferrer">Sumarme a la comunidad</a>
+    </nav>
+  </header>
 
   <main id="contenido-principal">
     <section id="inicio" class="hero-section" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <article class="hero-main">
-          <img class="hero-main__image" src="https://i.imgur.com/3PUC6MW.png" width="1600" height="900"
-            alt="Federico en el estudio de Mundo Biohack" fetchpriority="high"
-            data-fallback="assets/images/image-fallback.svg">
-          <div class="hero-main__shade" aria-hidden="true"></div>
-          <div class="hero-copy">
-            <span class="section-kicker">Mundo Biohack</span>
-            <h1 id="hero-title">Biohacking explicado de forma simple.</h1>
-            <p>Videos, ideas, tecnología, experiencias y fuentes para entender mejor el cuerpo, el bienestar y el rendimiento.</p>
-            <div class="hero-actions">
-              <a class="primary" href="#en-portada" data-track="hero_primary_click">Explorar contenidos</a>
-              <a class="secondary-btn" hidden data-config-link="communityWhatsApp"
-                data-track="hero_community_click" target="_blank" rel="noopener noreferrer">Sumarme a la comunidad</a>
-            </div>
-          </div>
-        </article>
-
-        <aside class="hero-side" aria-label="Destacados de portada">
-          <article class="hero-side-card" data-search-item data-search-type="Contenido"
-            data-search-title="Entrevistas de Mundo Biohack"
-            data-search-description="Conversaciones sobre ciencia, bienestar, tecnología y rendimiento."
-            data-search-target="#mundo-biohack-tv">
-            <img class="hero-side-card__background" src="https://i.imgur.com/CPtr2Io.png" width="1600" height="900"
-              alt="" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div class="hero-side-card__shade" aria-hidden="true"></div>
-            <div class="hero-side-card__content">
-              <span class="content-status">Próximamente</span>
-              <h2>Entrevistas de Mundo Biohack</h2>
-              <p>Conversaciones con personas que exploran ciencia, bienestar, tecnología y rendimiento.</p>
-            </div>
-          </article>
-
-          <a class="hero-side-card hero-side-card--link" href="#seleccion-editorial"
-            data-track="latest_content_click" data-search-item data-search-type="Contenido"
-            data-search-title="Qué es el biohacking y por dónde empezar"
-            data-search-description="Una selección de fuentes y contenidos para empezar con criterio."
-            data-search-target="#seleccion-editorial">
-            <img class="hero-side-card__background" src="https://i.imgur.com/ORpDce1.png" width="1600" height="900"
-              alt="" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div class="hero-side-card__shade" aria-hidden="true"></div>
-            <div class="hero-side-card__content">
-              <span class="external-badge">Guía editorial</span>
-              <h2>Qué es el biohacking y por dónde empezar</h2>
-              <p>Una selección de fuentes y contenidos para empezar con criterio.</p>
-            </div>
-            <span class="card-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"/></svg>
-            </span>
-          </a>
-
-          <a class="hero-side-card hero-side-card--link hero-side-product" href="#productos-experiencias"
-            data-track="product_interest_click" data-search-item data-search-type="Producto"
-            data-search-title="Plantillas FIR"
-            data-search-description="Materiales, formato y experiencia dentro del ecosistema Mundo Biohack."
-            data-search-target="#productos-experiencias">
-            <img class="hero-side-card__background" src="https://i.imgur.com/fi8vhEd.png" width="1600" height="900"
-              alt="Plantillas FIR" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div class="hero-side-card__shade" aria-hidden="true"></div>
-            <div class="hero-side-card__content">
-              <span class="product-tag">Producto destacado</span>
-              <h2>Plantillas FIR</h2>
-              <p>Materiales, formato y experiencia dentro del ecosistema Mundo Biohack.</p>
-            </div>
-            <span class="card-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"/></svg>
-            </span>
-          </a>
-        </aside>
+      <div class="hero-media" aria-hidden="true">
+        <img src="https://i.imgur.com/3PUC6MW.png" width="1600" height="900" alt="" fetchpriority="high" decoding="async" data-fallback="assets/images/image-fallback.svg">
       </div>
-    </section>
-
-    <section id="en-portada" class="cover-section" aria-labelledby="cover-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">Portada editorial</span>
-            <h2 id="cover-title" class="section-title">En portada</h2>
-            <p class="section-lead">Contenidos, fuentes, productos y próximos formatos seleccionados por Mundo Biohack.</p>
-          </div>
-        </div>
-
-        <div class="cover-grid">
-          <article class="cover-card media-card" data-search-item data-search-type="Contenido"
-            data-search-title="Primera serie audiovisual de Mundo Biohack"
-            data-search-description="Conversaciones y experiencias conducidas por Federico."
-            data-search-target="#mundo-biohack-tv">
-            <div class="media-card__image">
-              <img src="https://i.imgur.com/1HPC9Gk.png" width="1600" height="900" alt="Próxima serie audiovisual"
-                loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            </div>
-            <div class="media-card__body">
-              <div class="cover-card__meta"><span>Contenido propio</span><span class="content-status">Próximamente</span></div>
-              <h3>Primera serie audiovisual de Mundo Biohack</h3>
-              <p>Conversaciones y experiencias conducidas por Federico.</p>
-            </div>
-          </article>
-
-          <article class="cover-card media-card" data-search-item data-search-type="Contenido"
-            data-search-title="Experiencias y pruebas documentadas"
-            data-search-description="Procesos, preguntas y aprendizajes compartidos."
-            data-search-target="#mundo-biohack-tv">
-            <div class="media-card__image">
-              <img src="https://i.imgur.com/OqAuFzB.png" width="1600" height="900" alt="Próximas experiencias documentadas"
-                loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            </div>
-            <div class="media-card__body">
-              <div class="cover-card__meta"><span>Contenido propio</span><span class="content-status">Próximamente</span></div>
-              <h3>Experiencias y pruebas documentadas</h3>
-              <p>Procesos, preguntas y aprendizajes compartidos.</p>
-            </div>
-          </article>
-
-          <a class="cover-card media-card" href="https://ods.od.nih.gov/factsheets/WYNTK-DatosEnEspanol/"
-            target="_blank" rel="noopener noreferrer" data-track="external_resource_click"
-            data-search-item data-search-type="Fuente"
-            data-search-title="Suplementos dietéticos: lo que debe saber"
-            data-search-description="Recurso en español de la Oficina de Suplementos Dietéticos del NIH."
-            data-search-href="https://ods.od.nih.gov/factsheets/WYNTK-DatosEnEspanol/">
-            <div class="media-card__image">
-              <img src="https://i.imgur.com/iokkRfp.png" width="1600" height="900" alt="Información sobre suplementos"
-                loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            </div>
-            <div class="media-card__body">
-              <div class="cover-card__meta"><span>Fuente externa</span><span class="external-badge">ODS / NIH</span></div>
-              <h3>Suplementos dietéticos: lo que debe saber</h3>
-              <p>Información institucional en español para consultar antes de decidir.</p>
-            </div>
-          </a>
-
-          <a class="cover-card media-card" href="https://www.who.int/es/news-room/fact-sheets/detail/mental-health-strengthening-our-response"
-            target="_blank" rel="noopener noreferrer" data-track="external_resource_click"
-            data-search-item data-search-type="Fuente"
-            data-search-title="Salud mental: fortalecer nuestra respuesta"
-            data-search-description="Ficha institucional de la Organización Mundial de la Salud."
-            data-search-href="https://www.who.int/es/news-room/fact-sheets/detail/mental-health-strengthening-our-response">
-            <div class="media-card__image">
-              <img src="https://i.imgur.com/CPtr2Io.png" width="1600" height="900" alt="Salud mental"
-                loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            </div>
-            <div class="media-card__body">
-              <div class="cover-card__meta"><span>Fuente externa</span><span class="external-badge">OMS</span></div>
-              <h3>Salud mental: fortalecer nuestra respuesta</h3>
-              <p>Marco institucional sobre bienestar mental y factores protectores.</p>
-            </div>
-          </a>
-
-          <a class="cover-card media-card cover-card--product" href="#producto-squeeze"
-            data-track="product_interest_click" data-search-item data-search-type="Producto"
-            data-search-title="Squeeze Alcaline"
-            data-search-description="Materiales, formato y experiencia de uso."
-            data-search-target="#producto-squeeze">
-            <div class="media-card__image">
-              <img src="https://i.imgur.com/tokDktZ.png" width="1600" height="900" alt="Squeeze Alcaline"
-                loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            </div>
-            <div class="media-card__body">
-              <div class="cover-card__meta"><span>Producto</span><span class="product-tag">Producto explorado</span></div>
-              <h3>Squeeze Alcaline</h3>
-              <p>Materiales, formato y experiencia de uso.</p>
-            </div>
-          </a>
-
-          <a class="cover-card media-card cover-card--product" href="#producto-brazalete"
-            data-track="product_interest_click" data-search-item data-search-type="Producto"
-            data-search-title="Brazalete FIR"
-            data-search-description="Tecnología portátil, materiales y experiencia."
-            data-search-target="#producto-brazalete">
-            <div class="media-card__image">
-              <img src="https://i.imgur.com/A2iMF7B.png" width="1600" height="900" alt="Brazalete FIR"
-                loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            </div>
-            <div class="media-card__body">
-              <div class="cover-card__meta"><span>Producto</span><span class="product-tag">Tecnología aplicada</span></div>
-              <h3>Brazalete FIR</h3>
-              <p>Tecnología portátil, materiales y experiencia.</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="productos-experiencias" class="section-block products-section" aria-labelledby="products-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">Tecnología aplicada</span>
-            <h2 id="products-title" class="section-title">Productos que forman parte del ecosistema</h2>
-            <p class="section-lead">Conocé sus materiales, formatos y experiencias de uso dentro de Mundo Biohack. La atención y las consultas se realizan por WhatsApp.</p>
-          </div>
-        </div>
-
-        <div class="products-layout">
-          <article id="producto-plantillas" class="product-feature" data-search-item data-search-type="Producto"
-            data-search-title="Plantillas FIR" data-search-description="Tecnología FIR, movimiento y experiencia."
-            data-search-target="#producto-plantillas" data-product-id="plantillas-fir" data-product-position="featured">
-            <div class="product-visual">
-              <img src="https://i.imgur.com/fi8vhEd.png" width="1600" height="900" alt="Plantillas FIR"
-                loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            </div>
-            <div class="product-overlay" aria-hidden="true"></div>
-            <div class="product-copy">
-              <span class="product-tag">Producto destacado</span>
-              <h3>Plantillas FIR</h3>
-              <p>Una presentación editorial de sus materiales, formato y formas de uso dentro del ecosistema.</p>
-              <div class="product-tags">
-                <span class="product-tag">Tecnología FIR</span>
-                <span class="product-tag">Movimiento</span>
-                <span class="product-tag">Experiencia</span>
-              </div>
-              <div class="product-actions">
-                <a class="community-btn" hidden data-config-link="product"
-                  data-product-message="Hola, llegué desde Mundo Biohack y quiero conocer más sobre las Plantillas FIR."
-                  data-track="product_interest_click" target="_blank" rel="noopener noreferrer">Conocer las Plantillas FIR</a>
-                <a class="secondary-btn" href="#comunidad">Conocerlo en la comunidad</a>
-              </div>
-            </div>
-          </article>
-
-          <div class="product-secondary-stack">
-            <article id="producto-squeeze" class="product-secondary" data-search-item data-search-type="Producto"
-              data-search-title="Squeeze Alcaline" data-search-description="Hidratación, materiales y experiencia."
-              data-search-target="#producto-squeeze" data-product-id="squeeze-alcaline" data-product-position="secondary">
-              <div class="product-visual">
-                <img src="https://i.imgur.com/tokDktZ.png" width="1600" height="900" alt="Squeeze Alcaline"
-                  loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-              </div>
-              <div class="product-overlay" aria-hidden="true"></div>
-              <div class="product-copy">
-                <span class="type-badge">Hidratación</span>
-                <h3>Squeeze Alcaline</h3>
-                <p>Materiales, formato y experiencia de uso.</p>
-                <div class="product-tags">
-                  <span class="product-tag">Hidratación</span>
-                  <span class="product-tag">Materiales</span>
-                  <span class="product-tag">Experiencia</span>
-                </div>
-                <div class="product-actions">
-                  <a class="community-btn" hidden data-config-link="product"
-                    data-product-message="Hola, llegué desde Mundo Biohack y quiero conocer más sobre la Squeeze Alcaline."
-                    data-track="product_interest_click" target="_blank" rel="noopener noreferrer">Conocer la Squeeze</a>
-                  <a class="secondary-btn" href="#comunidad">Conocerlo en la comunidad</a>
-                </div>
-              </div>
-            </article>
-
-            <article id="producto-brazalete" class="product-secondary" data-search-item data-search-type="Producto"
-              data-search-title="Brazalete FIR" data-search-description="Wearable, tecnología FIR y experiencia."
-              data-search-target="#producto-brazalete" data-product-id="brazalete-fir" data-product-position="secondary">
-              <div class="product-visual">
-                <img src="https://i.imgur.com/A2iMF7B.png" width="1600" height="900" alt="Brazalete FIR"
-                  loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-              </div>
-              <div class="product-overlay" aria-hidden="true"></div>
-              <div class="product-copy">
-                <span class="type-badge">Wearable</span>
-                <h3>Brazalete FIR</h3>
-                <p>Tecnología portátil, materiales y experiencia.</p>
-                <div class="product-tags">
-                  <span class="product-tag">Wearable</span>
-                  <span class="product-tag">Tecnología FIR</span>
-                  <span class="product-tag">Experiencia</span>
-                </div>
-                <div class="product-actions">
-                  <a class="community-btn" hidden data-config-link="product"
-                    data-product-message="Hola, llegué desde Mundo Biohack y quiero conocer más sobre el Brazalete FIR."
-                    data-track="product_interest_click" target="_blank" rel="noopener noreferrer">Conocer el Brazalete</a>
-                  <a class="secondary-btn" href="#comunidad">Conocerlo en la comunidad</a>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <p class="product-disclosure">Mundo Biohack mantiene una relación comercial con algunos productos presentados. El contenido es educativo y no reemplaza orientación profesional.</p>
-      </div>
-    </section>
-
-    <section id="mundo-biohack-tv" class="section-block tv-section" aria-labelledby="tv-title">
-      <div class="container">
-        <article class="tv-feature">
-          <div class="tv-feature__copy">
-            <span class="section-kicker">Videoteca propia</span>
-            <span class="content-status">Próximamente</span>
-            <h2 id="tv-title">Mundo Biohack TV</h2>
-            <p>Entrevistas, explicaciones, pruebas de tecnología, coberturas y experiencias conducidas por Federico.</p>
-          </div>
-          <div class="tv-feature__visual">
-            <img src="https://i.imgur.com/3PUC6MW.png" width="1600" height="900" alt="Federico en Mundo Biohack TV"
-              loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-          </div>
-        </article>
-
-        <div class="tv-notice">
-          <p>Los primeros formatos propios se publicarán a medida que finalice su producción.</p>
-        </div>
-
-        <div class="future-formats">
-          <article class="future-format" data-search-item data-search-type="Contenido"
-            data-search-title="Entrevistas" data-search-description="Conversaciones con personas que exploran ciencia y bienestar."
-            data-search-target="#mundo-biohack-tv">
-            <img src="https://i.imgur.com/73PRkHI.png" width="1600" height="900" alt="Formato de entrevistas"
-              loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div><h3>Entrevistas</h3><p>Conversaciones con personas que exploran ciencia y bienestar.</p></div>
-          </article>
-          <article class="future-format" data-search-item data-search-type="Contenido"
-            data-search-title="Experiencias y pruebas" data-search-description="Procesos, aprendizajes y pruebas documentadas."
-            data-search-target="#mundo-biohack-tv">
-            <img src="https://i.imgur.com/OqAuFzB.png" width="1600" height="900" alt="Formato de experiencias y pruebas"
-              loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div><h3>Experiencias y pruebas</h3><p>Procesos, aprendizajes y pruebas documentadas.</p></div>
-          </article>
-          <article class="future-format" data-search-item data-search-type="Contenido"
-            data-search-title="Explicaciones" data-search-description="Conceptos complejos contados de forma simple."
-            data-search-target="#mundo-biohack-tv">
-            <img src="https://i.imgur.com/IBgOhQM.png" width="1600" height="900" alt="Formato de explicaciones"
-              loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div><h3>Explicaciones</h3><p>Conceptos complejos contados de forma simple.</p></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="explorar-temas" class="section-block topics-section" aria-labelledby="topics-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">Explorar por tema</span>
-            <h2 id="topics-title" class="section-title">Elegí por dónde querés seguir</h2>
-            <p class="section-lead">Áreas que organizan contenidos, fuentes, experiencias y próximos formatos de Mundo Biohack.</p>
-          </div>
-        </div>
-        <p class="topics-notice">Los archivos temáticos se habilitarán progresivamente.</p>
-        <div class="topics-grid"><article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Sueño" data-search-description="Descanso, ambiente y ritmos cotidianos." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/OZR6dli.png" width="1600" height="900" alt="Imagen temática de Sueño"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Sueño</h3><p>Descanso, ambiente y ritmos cotidianos.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Energía" data-search-description="Luz, movimiento, hidratación y rutina." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/ORpDce1.png" width="1600" height="900" alt="Imagen temática de Energía"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Energía</h3><p>Luz, movimiento, hidratación y rutina.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Rendimiento" data-search-description="Fuerza, capacidad aeróbica y constancia." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/1HPC9Gk.png" width="1600" height="900" alt="Imagen temática de Rendimiento"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Rendimiento</h3><p>Fuerza, capacidad aeróbica y constancia.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Recuperación" data-search-description="Pausas, descanso y señales corporales." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/OqAuFzB.png" width="1600" height="900" alt="Imagen temática de Recuperación"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Recuperación</h3><p>Pausas, descanso y señales corporales.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Longevidad" data-search-description="Hábitos y decisiones con mirada a largo plazo." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/73PRkHI.png" width="1600" height="900" alt="Imagen temática de Longevidad"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Longevidad</h3><p>Hábitos y decisiones con mirada a largo plazo.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Nutrición" data-search-description="Alimentación, contexto y fuentes confiables." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/IBgOhQM.png" width="1600" height="900" alt="Imagen temática de Nutrición"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Nutrición</h3><p>Alimentación, contexto y fuentes confiables.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Tecnología" data-search-description="Wearables, biomarcadores y herramientas." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/5dtcMR1.png" width="1600" height="900" alt="Imagen temática de Tecnología"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Tecnología</h3><p>Wearables, biomarcadores y herramientas.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Mente" data-search-description="Atención, estrés y bienestar mental." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/CPtr2Io.png" width="1600" height="900" alt="Imagen temática de Mente"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Mente</h3><p>Atención, estrés y bienestar mental.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Hábitos" data-search-description="Lo pequeño, repetible y sostenible." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/TM8MKUP.png" width="1600" height="900" alt="Imagen temática de Hábitos"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Hábitos</h3><p>Lo pequeño, repetible y sostenible.</p></div>
-    </article>
-<article class="topic-card media-card" data-search-item data-search-type="Tema"
-      data-search-title="Productos" data-search-description="Materiales, experiencias y formas de uso." data-search-target="#explorar-temas">
-      <div class="media-card__image">
-        <img src="https://i.imgur.com/iokkRfp.png" width="1600" height="900" alt="Imagen temática de Productos"
-          loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-      </div>
-      <div class="media-card__body"><h3>Productos</h3><p>Materiales, experiencias y formas de uso.</p></div>
-    </article></div>
-      </div>
-    </section>
-
-    <section id="clips-cortos" class="section-block clips-section" aria-labelledby="clips-title">
-      <div class="container">
-        <div class="carousel-head">
-          <div>
-            <span class="section-kicker">Formato corto</span>
-            <span class="content-status">Próximamente</span>
-            <h2 id="clips-title" class="section-title">Clips de Mundo Biohack</h2>
-            <p class="section-lead">Fragmentos, conceptos, experiencias y respuestas breves preparados para una futura biblioteca vertical.</p>
-          </div>
-          <div class="carousel-controls" aria-label="Controles del carrusel de clips">
-            <button class="carousel-control" type="button" data-clips-prev aria-label="Ver clips anteriores">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m5-5-5 5 5 5" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-            <button class="carousel-control" type="button" data-clips-next aria-label="Ver más clips">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="clips-track" data-clips-track tabindex="0" aria-label="Próximos clips de Mundo Biohack">
-          <article class="clip-card" data-search-item data-search-type="Contenido"
-            data-search-title="Ideas con Federico" data-search-description="Conceptos breves para empezar a explorar."
-            data-search-target="#clips-cortos">
-            <img src="https://i.imgur.com/3PUC6MW.png" width="900" height="1600" alt="Ideas con Federico"
-              loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div class="clip-card__overlay"><span class="type-badge">Idea</span><h3>Ideas con Federico</h3><p>Conceptos breves para empezar a explorar.</p></div>
-          </article>
-          <article class="clip-card" data-search-item data-search-type="Contenido"
-            data-search-title="Sueño y descanso" data-search-description="Clips sobre ritmos, ambiente y recuperación."
-            data-search-target="#clips-cortos">
-            <img src="https://i.imgur.com/OZR6dli.png" width="900" height="1600" alt="Sueño y descanso"
-              loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div class="clip-card__overlay"><span class="type-badge">Sueño</span><h3>Sueño y descanso</h3><p>Clips sobre ritmos, ambiente y recuperación.</p></div>
-          </article>
-          <article class="clip-card" data-search-item data-search-type="Contenido"
-            data-search-title="Hábitos diarios" data-search-description="Pequeñas decisiones que se pueden sostener."
-            data-search-target="#clips-cortos">
-            <img src="https://i.imgur.com/TM8MKUP.png" width="900" height="1600" alt="Hábitos diarios"
-              loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div class="clip-card__overlay"><span class="type-badge">Hábitos</span><h3>Hábitos diarios</h3><p>Pequeñas decisiones que se pueden sostener.</p></div>
-          </article>
-          <article class="clip-card" data-search-item data-search-type="Contenido"
-            data-search-title="Tecnología explicada" data-search-description="Herramientas explicadas sin exageraciones."
-            data-search-target="#clips-cortos">
-            <img src="https://i.imgur.com/5dtcMR1.png" width="900" height="1600" alt="Tecnología explicada"
-              loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-            <div class="clip-card__overlay"><span class="type-badge">Tecnología</span><h3>Tecnología explicada</h3><p>Herramientas explicadas sin exageraciones.</p></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="seleccion-editorial" class="section-block selection-section" aria-labelledby="selection-title">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="section-kicker">Fuentes externas seleccionadas</span>
-            <h2 id="selection-title" class="section-title">Selección editorial</h2>
-            <p class="section-lead">Contenidos evergreen elegidos para ampliar perspectivas. Cada pieza abre en su fuente original.</p>
-          </div>
-        </div>
-
-        <div class="selection-layout">
-          <a class="selection-lead" href="https://www.youtube.com/watch?v=iSqobxCVlMg"
-            target="_blank" rel="noopener noreferrer" data-track="external_resource_click"
-            data-search-item data-search-type="Fuente"
-            data-search-title="La rutina diaria de Bryan Johnson"
-            data-search-description="Una ventana al enfoque Blueprint y su uso sistemático de métricas personales."
-            data-search-href="https://www.youtube.com/watch?v=iSqobxCVlMg">
-            <div class="selection-lead__image">
-              <img src="https://i.ytimg.com/vi/iSqobxCVlMg/maxresdefault.jpg" width="1280" height="720"
-                alt="La rutina diaria de Bryan Johnson" loading="lazy" decoding="async"
-                data-fallback-src="https://i.ytimg.com/vi/iSqobxCVlMg/hqdefault.jpg" data-fallback="assets/images/image-fallback.svg">
-              <span class="youtube-mark" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="m8 5 11 7-11 7V5Z" fill="currentColor"/></svg>
-              </span>
-            </div>
-            <div class="selection-lead__body">
-              <span class="external-badge">Video externo · Bryan Johnson</span>
-              <h3>La rutina diaria de Bryan Johnson</h3>
-              <p class="original-title">My INTENSE Morning Routine (Live to 150+)</p>
-              <p class="selection-copy">Seleccionado para observar cómo el enfoque Blueprint organiza rutinas, mediciones y decisiones personales.</p>
-            </div>
-          </a>
-
-          <div class="selection-grid">
-            <a class="selection-card media-card" href="https://www.youtube.com/watch?v=JaRGJVrJBQ8"
-              target="_blank" rel="noopener noreferrer" data-track="external_resource_click"
-              data-search-item data-search-type="Fuente"
-              data-search-title="La ciencia y la práctica de mejorar el sueño"
-              data-search-description="Selección audiovisual sobre sueño y neurociencia."
-              data-search-href="https://www.youtube.com/watch?v=JaRGJVrJBQ8">
-              <div class="media-card__image">
-                <img src="https://i.ytimg.com/vi/JaRGJVrJBQ8/maxresdefault.jpg" width="1280" height="720"
-                  alt="La ciencia y la práctica de mejorar el sueño" loading="lazy" decoding="async"
-                  data-fallback-src="https://i.ytimg.com/vi/JaRGJVrJBQ8/hqdefault.jpg" data-fallback="assets/images/image-fallback.svg">
-              </div>
-              <div class="media-card__body">
-                <span class="external-badge">Video externo · Andrew Huberman</span>
-                <h3>La ciencia y la práctica de mejorar el sueño</h3>
-                <p class="original-title">The Science &amp; Practice of Perfecting Your Sleep</p>
-                <p>Seleccionado por su explicación extensa sobre sueño y ritmos.</p>
-              </div>
-            </a>
-
-            <a class="selection-card media-card" href="https://www.youtube.com/watch?v=B94rbrZkXPI"
-              target="_blank" rel="noopener noreferrer" data-track="external_resource_click"
-              data-search-item data-search-type="Fuente"
-              data-search-title="Una guía fundamental sobre longevidad"
-              data-search-description="Selección audiovisual sobre marcos de longevidad."
-              data-search-href="https://www.youtube.com/watch?v=B94rbrZkXPI">
-              <div class="media-card__image">
-                <img src="https://i.ytimg.com/vi/B94rbrZkXPI/maxresdefault.jpg" width="1280" height="720"
-                  alt="Una guía fundamental sobre longevidad" loading="lazy" decoding="async"
-                  data-fallback-src="https://i.ytimg.com/vi/B94rbrZkXPI/hqdefault.jpg" data-fallback="assets/images/image-fallback.svg">
-              </div>
-              <div class="media-card__body">
-                <span class="external-badge">Video externo · Peter Attia MD</span>
-                <h3>Una guía fundamental sobre longevidad</h3>
-                <p class="original-title">Longevity 101: A Foundational Guide</p>
-                <p>Seleccionado como marco introductorio para pensar salud a largo plazo.</p>
-              </div>
-            </a>
-
-            <a class="selection-card media-card" href="https://www.health.harvard.edu/healthy-aging-and-longevity/ways-to-maximize-your-energy"
-              target="_blank" rel="noopener noreferrer" data-track="external_resource_click"
-              data-search-item data-search-type="Fuente"
-              data-search-title="Cómo maximizar tu energía"
-              data-search-description="Artículo de Harvard Health."
-              data-search-href="https://www.health.harvard.edu/healthy-aging-and-longevity/ways-to-maximize-your-energy">
-              <div class="media-card__image">
-                <img src="https://i.imgur.com/ORpDce1.png" width="1600" height="900" alt="Energía"
-                  loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-              </div>
-              <div class="media-card__body">
-                <span class="external-badge">Artículo externo · Harvard Health</span>
-                <h3>Cómo maximizar tu energía</h3>
-                <p>Seleccionado por sus recomendaciones generales sobre hábitos y movimiento.</p>
-              </div>
-            </a>
-
-            <a class="selection-card media-card" href="https://www.who.int/es/news-room/fact-sheets/detail/healthy-diet"
-              target="_blank" rel="noopener noreferrer" data-track="external_resource_click"
-              data-search-item data-search-type="Fuente"
-              data-search-title="Alimentación saludable"
-              data-search-description="Ficha en español de la Organización Mundial de la Salud."
-              data-search-href="https://www.who.int/es/news-room/fact-sheets/detail/healthy-diet">
-              <div class="media-card__image">
-                <img src="https://i.imgur.com/IBgOhQM.png" width="1600" height="900" alt="Alimentación saludable"
-                  loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
-              </div>
-              <div class="media-card__body">
-                <span class="external-badge">Artículo externo · OMS</span>
-                <h3>Alimentación saludable</h3>
-                <p>Seleccionado como referencia institucional en español sobre alimentación.</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="source-note">
-          <strong>Contenido externo:</strong> las opiniones, afirmaciones y recomendaciones pertenecen a sus autores e instituciones. Mundo Biohack organiza estas fuentes con fines educativos y curatoriales.
-        </div>
-      </div>
-    </section>
-
-    <section id="comunidad" class="section-block community-section" aria-labelledby="community-title">
-      <div class="container community-shell">
-        <div class="community-main">
-          <span class="section-kicker">Comunidad</span>
-          <h2 id="community-title" class="section-title">La conversación continúa en WhatsApp</h2>
-          <p class="section-lead">Sumate para conocer nuevos contenidos, experiencias, herramientas, actividades y productos que forman parte del ecosistema Mundo Biohack.</p>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <span class="eyebrow">Mundo Biohack · criterio antes que hype</span>
+          <h1 id="hero-title">Biohacking<br><em>sin humo.</em></h1>
+          <p class="hero-lead">Entendé qué vale la pena explorar, qué medir y qué mirar con cautela. Fuentes, experiencias y productos explicados sin promesas mágicas.</p>
           <div class="hero-actions">
-            <a class="community-btn" hidden data-config-link="communityWhatsApp"
-              data-track="community_join_click" target="_blank" rel="noopener noreferrer">Entrar a la comunidad</a>
-            <a class="secondary-btn" hidden data-config-link="instagram"
-              data-track="instagram_click" target="_blank" rel="noopener noreferrer">Ver Instagram</a>
+            <a class="btn btn-primary" href="#empeza">Empezá por acá</a>
+            <a class="btn btn-ghost" href="#criterio">Cómo seleccionamos</a>
+          </div>
+          <div class="hero-proof" aria-label="Principios editoriales">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Fuentes identificadas</span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>Evidencia ≠ experiencia</span>
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Contenido educativo</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="community-side">
-          <article class="community-panel">
-            <h3>Contenido y experiencias</h3>
-            <p>Videos, fuentes, pruebas y novedades del ecosistema.</p>
+    <section id="empeza" class="section section-start" aria-labelledby="start-title">
+      <div class="container">
+        <div class="section-head split-head">
+          <div>
+            <span class="eyebrow">Empezá por acá</span>
+            <h2 id="start-title">Tres puertas de entrada.<br><em>Todo real. Todo ahora.</em></h2>
+          </div>
+          <p>No necesitás saber de biohacking para empezar. Elegimos tres recursos sólidos para entender sueño, longevidad y suplementos desde fuentes reconocibles.</p>
+        </div>
+
+        <div class="start-grid">
+          <a class="editorial-feature" href="https://www.youtube.com/watch?v=JaRGJVrJBQ8" target="_blank" rel="noopener noreferrer">
+            <div class="editorial-feature__media">
+              <img src="https://i.ytimg.com/vi/JaRGJVrJBQ8/maxresdefault.jpg" width="1280" height="720" alt="Video de Andrew Huberman sobre ciencia y práctica del sueño" loading="lazy" decoding="async" data-fallback-src="https://i.ytimg.com/vi/JaRGJVrJBQ8/hqdefault.jpg" data-fallback="assets/images/image-fallback.svg">
+            </div>
+            <div class="editorial-feature__body">
+              <span class="source-badge source-badge--expert">OPINIÓN EXPERTA · HUBERMAN LAB</span>
+              <h3>La ciencia y la práctica de mejorar el sueño</h3>
+              <p>Una introducción extensa a ritmos, luz, temperatura, hábitos y sueño.</p>
+              <span class="text-link">Ver en la fuente <span aria-hidden="true">↗</span></span>
+            </div>
+          </a>
+
+          <a class="editorial-feature" href="https://www.youtube.com/watch?v=B94rbrZkXPI" target="_blank" rel="noopener noreferrer">
+            <div class="editorial-feature__media">
+              <img src="https://i.ytimg.com/vi/B94rbrZkXPI/maxresdefault.jpg" width="1280" height="720" alt="Video de Peter Attia sobre longevidad" loading="lazy" decoding="async" data-fallback-src="https://i.ytimg.com/vi/B94rbrZkXPI/hqdefault.jpg" data-fallback="assets/images/image-fallback.svg">
+            </div>
+            <div class="editorial-feature__body">
+              <span class="source-badge source-badge--expert">OPINIÓN EXPERTA · PETER ATTIA MD</span>
+              <h3>Una guía fundamental para pensar longevidad</h3>
+              <p>Un marco introductorio para diferenciar lifespan, healthspan y decisiones a largo plazo.</p>
+              <span class="text-link">Ver en la fuente <span aria-hidden="true">↗</span></span>
+            </div>
+          </a>
+
+          <a class="editorial-feature" href="https://ods.od.nih.gov/factsheets/WYNTK-DatosEnEspanol/" target="_blank" rel="noopener noreferrer">
+            <div class="editorial-feature__media">
+              <img src="https://i.imgur.com/iokkRfp.png" width="1600" height="900" alt="Suplementos dietéticos" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+            </div>
+            <div class="editorial-feature__body">
+              <span class="source-badge source-badge--institution">FUENTE INSTITUCIONAL · NIH</span>
+              <h3>Suplementos: antes de sumar, entendé qué estás tomando</h3>
+              <p>Información oficial en español sobre eficacia, seguridad, etiquetado e interacciones.</p>
+              <span class="text-link">Leer en la fuente <span aria-hidden="true">↗</span></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="temas" class="section section-topics" aria-labelledby="topics-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Qué exploramos</span>
+          <h2 id="topics-title">No se trata de hackear el cuerpo.<br><em>Se trata de entenderlo mejor.</em></h2>
+          <p class="section-lead">Seis territorios para ordenar una categoría enorme sin convertir todo en una promesa.</p>
+        </div>
+
+        <div class="topics-grid">
+          <article class="topic-card topic-card--wide">
+            <img src="https://i.imgur.com/OZR6dli.png" width="1600" height="900" alt="Sueño y descanso" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+            <div class="topic-card__shade"></div>
+            <div class="topic-card__body"><span>01</span><h3>Sueño</h3><p>Ritmos, entorno, recuperación y hábitos.</p></div>
           </article>
-          <article class="community-panel">
-            <h3>Productos dentro de la comunidad</h3>
-            <p>Información y conversación humana sobre los productos que estamos explorando.</p>
+          <article class="topic-card">
+            <img src="https://i.imgur.com/ORpDce1.png" width="1600" height="900" alt="Energía y rendimiento" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+            <div class="topic-card__shade"></div>
+            <div class="topic-card__body"><span>02</span><h3>Energía</h3><p>Movimiento, hábitos y percepción de fatiga.</p></div>
+          </article>
+          <article class="topic-card">
+            <img src="https://i.imgur.com/73PRkHI.png" width="1600" height="900" alt="Longevidad" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+            <div class="topic-card__shade"></div>
+            <div class="topic-card__body"><span>03</span><h3>Longevidad</h3><p>Salud a largo plazo, métricas y contexto.</p></div>
+          </article>
+          <article class="topic-card">
+            <img src="https://i.imgur.com/IBgOhQM.png" width="1600" height="900" alt="Nutrición" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+            <div class="topic-card__shade"></div>
+            <div class="topic-card__body"><span>04</span><h3>Nutrición</h3><p>Alimentos, suplementos y decisiones con criterio.</p></div>
+          </article>
+          <article class="topic-card">
+            <img src="https://i.imgur.com/5dtcMR1.png" width="1600" height="900" alt="Tecnología aplicada al cuerpo" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+            <div class="topic-card__shade"></div>
+            <div class="topic-card__body"><span>05</span><h3>Tecnología</h3><p>Wearables, medición y herramientas.</p></div>
+          </article>
+          <article class="topic-card topic-card--wide">
+            <img src="https://i.imgur.com/TM8MKUP.png" width="1600" height="900" alt="Hábitos y mente" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+            <div class="topic-card__shade"></div>
+            <div class="topic-card__body"><span>06</span><h3>Hábitos &amp; mente</h3><p>Lo que repetís, lo que medís y lo que realmente podés sostener.</p></div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="productos" class="section section-products" aria-labelledby="products-title">
+      <div class="container">
+        <div class="section-head split-head">
+          <div>
+            <span class="eyebrow">Productos &amp; experiencias</span>
+            <h2 id="products-title">Explorar también es<br><em>probar con criterio.</em></h2>
+          </div>
+          <p>Presentamos productos del ecosistema sin confundir una experiencia de uso con una afirmación médica. Qué es, cómo se presenta y qué conviene preguntar antes de comprar.</p>
+        </div>
+
+        <div class="products-grid">
+          <article class="product-card product-card--featured">
+            <div class="product-card__media">
+              <img src="https://i.imgur.com/fi8vhEd.png" width="1600" height="900" alt="Plantillas FIR" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+              <span class="source-badge source-badge--commercial">PRODUCTO / RELACIÓN COMERCIAL</span>
+            </div>
+            <div class="product-card__body">
+              <div><span class="product-index">01</span><h3>Plantillas FIR</h3></div>
+              <p>Producto presentado dentro del ecosistema como tecnología FIR. Acá priorizamos formato, materiales, uso y experiencia, sin atribuirle beneficios terapéuticos no demostrados.</p>
+              <ul class="product-facts"><li>Formato cotidiano</li><li>Tecnología FIR declarada</li><li>Experiencia de uso</li></ul>
+              <a class="btn btn-small" hidden data-config-link="product" data-product-message="Hola, llegué desde Mundo Biohack y quiero conocer disponibilidad y detalles de las Plantillas FIR." target="_blank" rel="noopener noreferrer">Consultar disponibilidad</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="https://i.imgur.com/tokDktZ.png" width="1600" height="900" alt="Squeeze Alcaline" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+              <span class="source-badge source-badge--commercial">PRODUCTO / RELACIÓN COMERCIAL</span>
+            </div>
+            <div class="product-card__body">
+              <div><span class="product-index">02</span><h3>Squeeze Alcaline</h3></div>
+              <p>Una propuesta de hidratación del ecosistema. La mirada de Mundo Biohack se concentra en el objeto, su formato y la experiencia concreta de uso.</p>
+              <ul class="product-facts"><li>Hidratación</li><li>Formato reutilizable</li><li>Uso cotidiano</li></ul>
+              <a class="btn btn-small" hidden data-config-link="product" data-product-message="Hola, llegué desde Mundo Biohack y quiero conocer disponibilidad y detalles de la Squeeze Alcaline." target="_blank" rel="noopener noreferrer">Consultar disponibilidad</a>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="https://i.imgur.com/A2iMF7B.png" width="1600" height="900" alt="Brazalete FIR" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg">
+              <span class="source-badge source-badge--commercial">PRODUCTO / RELACIÓN COMERCIAL</span>
+            </div>
+            <div class="product-card__body">
+              <div><span class="product-index">03</span><h3>Brazalete FIR</h3></div>
+              <p>Wearable presentado con tecnología FIR. Lo mostramos como producto y experiencia, diferenciando claramente la propuesta comercial de la evidencia.</p>
+              <ul class="product-facts"><li>Wearable</li><li>Tecnología FIR declarada</li><li>Experiencia de uso</li></ul>
+              <a class="btn btn-small" hidden data-config-link="product" data-product-message="Hola, llegué desde Mundo Biohack y quiero conocer disponibilidad y detalles del Brazalete FIR." target="_blank" rel="noopener noreferrer">Consultar disponibilidad</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="disclosure-strip"><strong>Transparencia comercial:</strong> algunos productos pueden tener relación comercial con Mundo Biohack. Eso no convierte una descripción de producto en evidencia de eficacia médica.</div>
+      </div>
+    </section>
+
+    <section id="fuentes" class="section section-editorial" aria-labelledby="sources-title">
+      <div class="container">
+        <div class="section-head split-head">
+          <div>
+            <span class="eyebrow">Selección editorial</span>
+            <h2 id="sources-title">Abrimos la fuente.<br><em>No te pedimos fe.</em></h2>
+          </div>
+          <p>Estas piezas salen de instituciones, médicos, investigadores y experimentadores reconocibles. Cada enlace abre en su origen para que puedas revisar el contexto completo.</p>
+        </div>
+
+        <div class="source-grid">
+          <a class="source-card source-card--large" href="https://www.youtube.com/watch?v=iSqobxCVlMg" target="_blank" rel="noopener noreferrer">
+            <div class="source-card__media"><img src="https://i.ytimg.com/vi/iSqobxCVlMg/maxresdefault.jpg" width="1280" height="720" alt="Rutina diaria de Bryan Johnson" loading="lazy" decoding="async" data-fallback-src="https://i.ytimg.com/vi/iSqobxCVlMg/hqdefault.jpg" data-fallback="assets/images/image-fallback.svg"></div>
+            <div class="source-card__body"><span class="source-badge source-badge--experience">EXPERIENCIA · BRYAN JOHNSON</span><h3>Blueprint visto desde adentro</h3><p>Una ventana al uso sistemático de rutinas, métricas y decisiones personales. Interesante como experiencia; no como receta universal.</p><span class="text-link">Ver fuente ↗</span></div>
+          </a>
+
+          <a class="source-card" href="https://www.health.harvard.edu/healthy-aging-and-longevity/ways-to-maximize-your-energy" target="_blank" rel="noopener noreferrer">
+            <div class="source-card__media"><img src="https://i.imgur.com/ORpDce1.png" width="1600" height="900" alt="Energía y hábitos" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg"></div>
+            <div class="source-card__body"><span class="source-badge source-badge--institution">FUENTE INSTITUCIONAL · HARVARD HEALTH</span><h3>Formas de maximizar tu energía</h3><p>Hábitos generales vinculados con movimiento, descanso y energía.</p><span class="text-link">Leer fuente ↗</span></div>
+          </a>
+
+          <a class="source-card" href="https://www.who.int/es/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noopener noreferrer">
+            <div class="source-card__media"><img src="https://i.imgur.com/IBgOhQM.png" width="1600" height="900" alt="Alimentación saludable" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg"></div>
+            <div class="source-card__body"><span class="source-badge source-badge--institution">FUENTE INSTITUCIONAL · OMS</span><h3>Alimentación saludable</h3><p>Referencia institucional sobre principios generales de alimentación.</p><span class="text-link">Leer fuente ↗</span></div>
+          </a>
+
+          <a class="source-card" href="https://www.who.int/es/news-room/fact-sheets/detail/mental-health-strengthening-our-response" target="_blank" rel="noopener noreferrer">
+            <div class="source-card__media"><img src="https://i.imgur.com/CPtr2Io.png" width="1600" height="900" alt="Salud mental y bienestar" loading="lazy" decoding="async" data-fallback="assets/images/image-fallback.svg"></div>
+            <div class="source-card__body"><span class="source-badge source-badge--institution">FUENTE INSTITUCIONAL · OMS</span><h3>Salud mental: marco general</h3><p>Contexto institucional para no reducir bienestar a hacks aislados.</p><span class="text-link">Leer fuente ↗</span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="criterio" class="section section-criteria" aria-labelledby="criteria-title">
+      <div class="container criteria-layout">
+        <div class="criteria-intro">
+          <span class="eyebrow">Nuestro criterio</span>
+          <h2 id="criteria-title">Curiosidad alta.<br><em>Umbral de credulidad bajo.</em></h2>
+          <p>Biohacking mezcla ciencia, hábitos, productos, experiencias personales y marketing. Nuestro trabajo editorial es no mezclarlos como si fueran lo mismo.</p>
+          <a class="text-link text-link--bright" href="politica-editorial">Leer política editorial →</a>
+        </div>
+
+        <div class="criteria-list">
+          <article><span>01</span><div><h3>La fuente se ve</h3><p>Cuando citamos algo externo, podés abrirlo y revisar quién lo dice.</p></div></article>
+          <article><span>02</span><div><h3>Evidencia no es experiencia</h3><p>Una experiencia puede inspirar una pregunta. No demuestra una conclusión.</p></div></article>
+          <article><span>03</span><div><h3>Lo comercial se etiqueta</h3><p>Si existe una relación comercial, debe poder identificarse sin buscar letra chica.</p></div></article>
+          <article><span>04</span><div><h3>No reemplazamos atención profesional</h3><p>El contenido es educativo y no sustituye evaluación, diagnóstico ni tratamiento.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-community" hidden data-community-section>
+      <div class="container community-panel">
+        <div><span class="eyebrow">Comunidad</span><h2>La conversación sigue afuera de la web.</h2><p>Recibí contenidos, ideas y novedades de Mundo Biohack.</p></div>
+        <a class="btn btn-primary" hidden data-config-link="communityWhatsApp" target="_blank" rel="noopener noreferrer">Sumarme por WhatsApp</a>
       </div>
     </section>
   </main>
 
-  <footer id="footer" class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a class="brand" href="#inicio" aria-label="Mundo Biohack, inicio">
-            <img class="brand-logo" src="assets/icons/logo-fallback.svg" width="50" height="50"
-              alt="Mundo Biohack" data-logo-image>
-            <span class="brand-wordmark"><span>MUNDO</span><span>BIOHACK</span></span>
-          </a>
-          <p>Portal audiovisual de biohacking en español: videos, ideas, tecnología, experiencias, fuentes y comunidad.</p>
-        </div>
-
-        <div class="footer-col">
-          <h2>Contenido</h2>
-          <a href="#mundo-biohack-tv">Videos</a>
-          <a href="#seleccion-editorial">Artículos</a>
-          <a href="#explorar-temas">Temas</a>
-          <a href="#clips-cortos">Clips</a>
-        </div>
-
-        <div class="footer-col">
-          <h2>Ecosistema</h2>
-          <a href="#productos-experiencias">Productos</a>
-          <a href="#comunidad">Comunidad</a>
-          <a hidden data-config-link="instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a hidden data-config-link="communityWhatsApp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a hidden data-config-link="youtube" target="_blank" rel="noopener noreferrer">YouTube</a>
-        </div>
-
-        <div class="footer-col">
-          <h2>Legal y editorial</h2>
-          <a href="aviso-educativo.html">Aviso educativo</a>
-          <a href="politica-editorial.html">Política editorial</a>
-          <a href="privacidad.html">Privacidad</a>
-          <a href="terminos.html">Términos</a>
-          <a href="divulgacion-comercial.html">Divulgación comercial</a>
-        </div>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#inicio" aria-label="Mundo Biohack, inicio">
+          <img class="brand-logo" src="assets/icons/logo-fallback.svg" width="46" height="46" alt="" data-logo-image>
+          <span class="brand-wordmark"><strong>MUNDO</strong><strong>BIOHACK</strong></span>
+        </a>
+        <p>Biohacking, hábitos, tecnología y bienestar explicados con criterio.</p>
       </div>
-
-      <div class="footer-bottom">
-        <span>© Mundo Biohack. Contenido educativo e informativo.</span>
-        <span>Algunos contenidos pueden incluir relaciones comerciales claramente identificadas.</span>
-      </div>
+      <nav aria-label="Contenido"><h2>Explorar</h2><a href="#empeza">Empezá por acá</a><a href="#temas">Temas</a><a href="#productos">Productos</a><a href="#fuentes">Fuentes</a></nav>
+      <nav aria-label="Legal"><h2>Transparencia</h2><a href="aviso-educativo">Aviso educativo</a><a href="politica-editorial">Política editorial</a><a href="divulgacion-comercial">Divulgación comercial</a><a href="privacidad">Privacidad</a><a href="terminos">Términos</a></nav>
+      <nav aria-label="Comunidad" hidden data-social-section><h2>Comunidad</h2><a hidden data-config-link="instagram" target="_blank" rel="noopener noreferrer">Instagram</a><a hidden data-config-link="youtube" target="_blank" rel="noopener noreferrer">YouTube</a><a hidden data-config-link="communityWhatsApp" target="_blank" rel="noopener noreferrer">WhatsApp</a></nav>
     </div>
+    <div class="container footer-bottom"><span>© 2026 Mundo Biohack.</span><span>Información educativa · no reemplaza atención profesional.</span></div>
   </footer>
-
-  <dialog data-search-dialog aria-labelledby="search-title">
-    <div class="search-panel">
-      <div class="search-head">
-        <h2 id="search-title">Buscar en Mundo Biohack</h2>
-        <button class="dialog-close" type="button" data-close-search aria-label="Cerrar buscador">×</button>
-      </div>
-
-      <form class="search-form" data-search-form>
-        <label for="site-search" class="visually-hidden">Término de búsqueda</label>
-        <input id="site-search" name="q" type="search"
-          placeholder="Ej.: sueño, longevidad, productos…" autocomplete="off">
-        <button type="submit">Buscar</button>
-      </form>
-
-      <p class="search-help">La búsqueda revisa contenidos, fuentes, temas y productos visibles en esta página.</p>
-      <div class="search-results" data-search-results aria-live="polite"></div>
-    </div>
-  </dialog>
 
   <script src="assets/js/config.js"></script>
   <script src="assets/js/app.js" defer></script>
