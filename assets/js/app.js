@@ -10,7 +10,11 @@
   const searchResults = document.querySelector("[data-search-results]");
   const searchItems = [...document.querySelectorAll("[data-search-item]")];
   const navLinks = [...document.querySelectorAll(".desktop-nav a[href^='#']")];
+  const themeDialog = document.querySelector("[data-theme-dialog]");
+  const productDialog = document.querySelector("[data-product-dialog]");
+
   let lastFocusedElement = null;
+  let lastInfoDialogTrigger = null;
 
   const normalize = (value) =>
     String(value || "")
@@ -18,6 +22,12 @@
       .replace(/[\u0300-\u036f]/g, "")
       .toLowerCase()
       .trim();
+
+  const sendEvent = (name, params = {}) => {
+    if (typeof window.gtag === "function" && name) {
+      window.gtag("event", name, params);
+    }
+  };
 
   const configuredUrl = (key, element) => {
     if (key === "communityWhatsApp") return config.communityWhatsAppUrl || "";
@@ -27,7 +37,7 @@
     if (key === "product") {
       const base = config.salesWhatsAppUrl || config.communityWhatsAppUrl || "";
       if (!base) return "";
-      const message = element.dataset.productMessage || "";
+      const message = element?.dataset.productMessage || "";
       const separator = base.includes("?") ? "&" : "?";
       return `${base}${separator}text=${encodeURIComponent(message)}`;
     }
@@ -66,8 +76,9 @@
         image.dataset.fallbackSrc = "";
         return;
       }
-      image.src = image.dataset.fallback;
-    }, { once: false });
+      const fallback = image.dataset.fallback;
+      if (fallback && !image.src.endsWith(fallback)) image.src = fallback;
+    });
   });
 
   const setMenu = (open) => {
@@ -95,26 +106,13 @@
     setMenu(false);
   });
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    if (menuIsOpen()) {
-      setMenu(false);
-      menuButton?.focus();
-    }
-    if (searchDialog?.open) {
-      searchDialog.close();
-      lastFocusedElement?.focus();
-    }
-  });
-
   window.addEventListener("resize", () => {
     if (window.innerWidth > 980) setMenu(false);
-  });
+  }, { passive: true });
 
   const closeSearch = () => {
     if (!searchDialog?.open) return;
     searchDialog.close();
-    lastFocusedElement?.focus();
   };
 
   document.querySelectorAll("[data-open-search]").forEach((button) => {
@@ -128,14 +126,23 @@
 
   document.querySelector("[data-close-search]")?.addEventListener("click", closeSearch);
 
+  searchDialog?.addEventListener("close", () => {
+    lastFocusedElement?.focus();
+  });
+
   searchDialog?.addEventListener("click", (event) => {
     const rect = searchDialog.getBoundingClientRect();
-    const outside =
-      event.clientX < rect.left ||
-      event.clientX > rect.right ||
-      event.clientY < rect.top ||
-      event.clientY > rect.bottom;
+    const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
     if (outside) closeSearch();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    if (menuIsOpen()) {
+      setMenu(false);
+      menuButton?.focus();
+    }
+    if (searchDialog?.open) closeSearch();
   });
 
   const createResult = (item) => {
@@ -154,6 +161,10 @@
     button.addEventListener("click", () => {
       const href = item.dataset.searchHref;
       const target = item.dataset.searchTarget;
+      sendEvent("search_result_click", {
+        result_type: item.dataset.searchType || "Contenido",
+        result_title: item.dataset.searchTitle || "Contenido"
+      });
       closeSearch();
 
       if (href) {
@@ -181,10 +192,10 @@
       return;
     }
 
+    sendEvent("search_query", { search_term: term });
+
     const matches = searchItems.filter((item) => {
-      const searchable = normalize(
-        `${item.dataset.searchType || ""} ${item.dataset.searchTitle || ""} ${item.dataset.searchDescription || ""}`
-      );
+      const searchable = normalize(`${item.dataset.searchType || ""} ${item.dataset.searchTitle || ""} ${item.dataset.searchDescription || ""}`);
       return searchable.includes(term);
     });
 
@@ -208,59 +219,17 @@
     if ((searchInput.value || "").trim().length >= 2) renderSearch(searchInput.value);
   });
 
-  const clipsTrack = document.querySelector("[data-clips-track]");
-  const clipsPrev = document.querySelector("[data-clips-prev]");
-  const clipsNext = document.querySelector("[data-clips-next]");
-
-  const clipStep = () => {
-    if (!clipsTrack) return 260;
-    const card = clipsTrack.querySelector(".clip-card");
-    if (!card) return 260;
-    const styles = getComputedStyle(clipsTrack);
-    const gap = parseFloat(styles.columnGap || styles.gap || "0");
-    return card.getBoundingClientRect().width + gap;
-  };
-
-  const updateClipControls = () => {
-    if (!clipsTrack || !clipsPrev || !clipsNext) return;
-    const maxScroll = Math.max(0, clipsTrack.scrollWidth - clipsTrack.clientWidth);
-    const hasOverflow = maxScroll > 2;
-    clipsPrev.hidden = !hasOverflow;
-    clipsNext.hidden = !hasOverflow;
-    clipsPrev.disabled = clipsTrack.scrollLeft <= 2;
-    clipsNext.disabled = clipsTrack.scrollLeft >= maxScroll - 2;
-  };
-
-  clipsPrev?.addEventListener("click", () => {
-    clipsTrack?.scrollBy({ left: -clipStep() * 2, behavior: "smooth" });
-  });
-
-  clipsNext?.addEventListener("click", () => {
-    clipsTrack?.scrollBy({ left: clipStep() * 2, behavior: "smooth" });
-  });
-
-  clipsTrack?.addEventListener("scroll", () => {
-    requestAnimationFrame(updateClipControls);
-  }, { passive: true });
-
   if ("IntersectionObserver" in window && navLinks.length) {
-    const sections = navLinks
-      .map((link) => document.querySelector(link.getAttribute("href")))
-      .filter(Boolean);
+    const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
     const visibility = new Map();
 
     const updateCurrent = () => {
-      const visible = [...visibility.entries()]
-        .filter(([, ratio]) => ratio > 0)
-        .sort((a, b) => b[1] - a[1])[0];
+      const visible = [...visibility.entries()].filter(([, ratio]) => ratio > 0).sort((a, b) => b[1] - a[1])[0];
       if (!visible) return;
       const activeHref = `#${visible[0].id}`;
       navLinks.forEach((link) => {
-        if (link.getAttribute("href") === activeHref) {
-          link.setAttribute("aria-current", "location");
-        } else {
-          link.removeAttribute("aria-current");
-        }
+        if (link.getAttribute("href") === activeHref) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
       });
     };
 
@@ -275,13 +244,6 @@
     sections.forEach((section) => observer.observe(section));
   }
 
-  window.addEventListener("load", updateClipControls);
-  window.addEventListener("resize", updateClipControls);
-  updateClipControls();
-
-
-  // V15.4 — rutas temáticas funcionales
-  const themeDialog = document.querySelector("[data-theme-dialog]");
   const themeRoutes = {
     sueno: {
       title: "Sueño",
@@ -311,13 +273,13 @@
       title: "Nutrición",
       description: "Una referencia institucional para separar principios generales de alimentación saludable de modas y claims aislados.",
       source: "OMS · fuente institucional",
-      url: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet"
+      url: "https://www.who.int/es/news-room/fact-sheets/detail/healthy-diet"
     },
     mente: {
       title: "Mente",
       description: "Un punto de partida institucional para entender bienestar mental, factores que influyen y enfoques de respuesta.",
       source: "OMS · fuente institucional",
-      url: "https://www.who.int/news-room/fact-sheets/detail/mental-health-strengthening-our-response"
+      url: "https://www.who.int/es/news-room/fact-sheets/detail/mental-health-strengthening-our-response"
     }
   };
 
@@ -326,22 +288,22 @@
       event.preventDefault();
       const route = themeRoutes[button.dataset.themeOpen];
       if (!route || !themeDialog) return;
+      lastInfoDialogTrigger = button;
       themeDialog.querySelector("[data-theme-title]").textContent = route.title;
       themeDialog.querySelector("[data-theme-description]").textContent = route.description;
       themeDialog.querySelector("[data-theme-source]").textContent = route.source;
       const link = themeDialog.querySelector("[data-theme-link]");
       link.href = route.url;
       themeDialog.showModal();
+      requestAnimationFrame(() => themeDialog.querySelector("[data-theme-close]")?.focus());
+      sendEvent("topic_click", { topic: button.dataset.themeOpen });
     });
   });
-  document.querySelector("[data-theme-close]")?.addEventListener("click", () => themeDialog?.close());
 
-  // V15.4 — información de producto siempre funcional, venta opcional con canal real
-  const productDialog = document.querySelector("[data-product-dialog]");
   const productDetails = {
     "plantillas-fir": {
       title: "Plantillas FIR",
-      summary: "Una herramienta para calzado vinculada a tecnología FIR, presentada desde materiales, formato y experiencia de uso.",
+      summary: "Una herramienta para calzado vinculada a tecnología FIR y presentada por Mundo Biohack dentro de su relación comercial con NipponFlex.",
       points: [
         "Qué es: una plantilla/accesorio que se integra al calzado.",
         "Cómo se incorpora: como parte de una rutina cotidiana de movimiento.",
@@ -351,7 +313,7 @@
     },
     "squeeze-alcaline": {
       title: "Squeeze Alcaline",
-      summary: "Una botella reutilizable del ecosistema Mundo Biohack, pensada para acompañar la hidratación cotidiana.",
+      summary: "Una botella reutilizable del ecosistema Mundo Biohack, presentada dentro de la relación comercial con NipponFlex.",
       points: [
         "Qué es: una squeeze/botella reutilizable.",
         "Cómo se incorpora: como herramienta de hidratación diaria.",
@@ -361,7 +323,7 @@
     },
     "brazalete-fir": {
       title: "Brazalete FIR",
-      summary: "Un accesorio wearable vinculado a tecnología FIR, presentado desde materiales, formato y experiencia de uso.",
+      summary: "Un accesorio wearable vinculado a tecnología FIR y presentado dentro de la relación comercial con NipponFlex.",
       points: [
         "Qué es: un brazalete de uso cotidiano.",
         "Cómo se incorpora: como accesorio wearable.",
@@ -371,7 +333,7 @@
     }
   };
 
-  const configureProductDialogLink = (detail) => {
+  const configureProductDialogLink = (detail, productId) => {
     const link = productDialog?.querySelector("[data-product-dialog-whatsapp]");
     if (!link) return;
     const base = config.salesWhatsAppUrl || config.communityWhatsAppUrl || "";
@@ -382,13 +344,16 @@
     }
     const separator = base.includes("?") ? "&" : "?";
     link.href = `${base}${separator}text=${encodeURIComponent(detail.message)}`;
+    link.dataset.productId = productId;
     link.hidden = false;
   };
 
   document.querySelectorAll("[data-product-open]").forEach((button) => {
     button.addEventListener("click", () => {
-      const detail = productDetails[button.dataset.productOpen];
+      const productId = button.dataset.productOpen;
+      const detail = productDetails[productId];
       if (!detail || !productDialog) return;
+      lastInfoDialogTrigger = button;
       productDialog.querySelector("[data-product-title]").textContent = detail.title;
       productDialog.querySelector("[data-product-summary]").textContent = detail.summary;
       const list = productDialog.querySelector("[data-product-points]");
@@ -397,24 +362,39 @@
         li.textContent = point;
         return li;
       }));
-      configureProductDialogLink(detail);
+      configureProductDialogLink(detail, productId);
       productDialog.showModal();
+      requestAnimationFrame(() => productDialog.querySelector("[data-product-close]")?.focus());
+      sendEvent("product_dialog_open", { product_id: productId });
     });
   });
+
+  document.querySelector("[data-theme-close]")?.addEventListener("click", () => themeDialog?.close());
   document.querySelector("[data-product-close]")?.addEventListener("click", () => productDialog?.close());
 
   [themeDialog, productDialog].forEach((dialog) => {
     dialog?.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
     });
+    dialog?.addEventListener("close", () => {
+      lastInfoDialogTrigger?.focus();
+      lastInfoDialogTrigger = null;
+    });
+  });
+
+  document.querySelector("[data-product-dialog-whatsapp]")?.addEventListener("click", (event) => {
+    sendEvent("product_whatsapp_click", { product_id: event.currentTarget.dataset.productId || "unknown" });
   });
 
   document.querySelectorAll("[data-track]").forEach((element) => {
     element.addEventListener("click", () => {
       const eventName = element.dataset.track;
-      if (typeof window.gtag === "function" && eventName) {
-        window.gtag("event", eventName);
-      }
+      if (!eventName) return;
+      sendEvent(eventName, {
+        product_id: element.dataset.productId || undefined,
+        product_position: element.dataset.productPosition || undefined,
+        instagram_item: element.dataset.instagramItem || undefined
+      });
     });
   });
 })();

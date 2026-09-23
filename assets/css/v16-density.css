@@ -1,0 +1,296 @@
+/* Mundo Biohack V16 — dense editorial rhythm */
+
+:root{
+  --container:min(1540px,calc(100vw - 44px));
+  --section-space:56px;
+  --card-gap:13px;
+  --cover-image-height:164px;
+  --topic-image-height:118px;
+}
+
+.section-block{padding:var(--section-space) 0}
+.cover-section{padding:20px 0 var(--section-space)}
+.section-head{margin-bottom:20px;gap:18px}
+.section-title{font-size:clamp(29px,2.8vw,44px)}
+.section-lead{max-width:680px;font-size:15px;line-height:1.5}
+.section-kicker{margin-bottom:7px}
+.media-card__body{padding:14px}
+.primary,.secondary-btn,.community-btn{min-height:44px;padding-inline:16px}
+
+/* Hero: preserve impact but stop dominating the page */
+.hero-section{padding:28px 0 18px}
+.hero-grid{grid-template-columns:minmax(0,1.85fr) minmax(310px,.92fr);gap:13px}
+.hero-main,.hero-side{height:520px}
+.hero-copy{min-height:520px;padding:clamp(30px,3.2vw,46px)}
+.hero-copy h1{max-width:600px;margin:14px 0 14px;font-size:clamp(43px,4.6vw,68px);line-height:.98}
+.hero-copy p{max-width:540px;margin-bottom:20px;font-size:clamp(16px,1.18vw,19px)}
+.hero-side{gap:11px}
+.hero-side-card{padding:17px}
+.hero-side-card h2{font-size:19px}
+.card-arrow{width:36px;height:36px}
+
+/* Ruta rápida: smaller cards, less vertical drag */
+.cover-grid{gap:13px}
+.cover-card{min-height:300px;grid-template-rows:164px 1fr}
+.cover-card .media-card__image{height:164px}
+.cover-card .media-card__body{min-height:136px;padding:14px}
+.cover-card__meta{min-height:24px;margin-bottom:7px}
+.cover-card h3{min-height:auto;margin-bottom:6px;font-size:18px}
+.cover-card p{font-size:12.5px;line-height:1.4}
+
+/* Topics: 4-up on wide screens, compact and scannable */
+.topics-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-auto-rows:206px!important;gap:12px!important}
+.topic-card{height:206px}
+.topic-card--button .media-card__image{height:112px}
+.topic-card--button .media-card__body{padding:11px 12px 12px}
+.topic-card h3{font-size:16px;margin-bottom:4px}
+.topic-card p{font-size:12px;line-height:1.35}
+.topic-card--button .media-card__body:after{margin-top:6px;font-size:10.5px}
+
+/* Products: still prominent, no longer oversized */
+.products-layout{grid-template-columns:minmax(0,1.55fr) repeat(2,minmax(0,1fr));grid-template-rows:440px;gap:13px}
+.product-feature,.product-secondary{height:440px;border-radius:21px}
+.product-feature .product-copy{width:54%;padding:28px}
+.product-secondary .product-copy{padding:18px}
+.product-secondary .product-copy h3{font-size:22px}
+.product-copy h3{font-size:clamp(27px,2.6vw,42px)}
+.product-copy p{font-size:13px;line-height:1.45;margin-bottom:12px}
+.product-secondary .product-visual{inset:8px 6px 134px}
+.product-tags{margin-bottom:11px}
+.product-disclosure{margin-top:13px;max-width:920px}
+
+/* Editorial selection: one compact lead + three equal cards in one visual row */
+.selection-layout{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,2.78fr);gap:13px;min-height:0;align-items:stretch}
+.selection-lead{height:410px;grid-template-rows:218px 1fr;border-radius:20px}
+.selection-lead__image{height:218px}
+.selection-lead__body{padding:17px;justify-content:flex-start}
+.selection-lead h3{font-size:clamp(22px,1.9vw,30px);margin:8px 0 6px}
+.selection-copy{font-size:12.5px;line-height:1.42}
+.selection-grid{height:410px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:1fr;gap:12px}
+.selection-card{height:410px;grid-template-rows:178px 1fr}
+.selection-card .media-card__image{height:178px}
+.selection-card .media-card__body{padding:13px}
+.selection-card h3{min-height:auto;font-size:15.5px;margin:7px 0 6px}
+.selection-card p{font-size:11.5px;line-height:1.4}
+.original-title{font-size:10.5px;margin-bottom:8px}
+.source-note{margin-top:13px;padding:12px 14px;font-size:12px}
+
+/* Instagram: denser window, supports up to six live items */
+.instagram-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.instagram-card{aspect-ratio:4/5;border-radius:19px}
+.instagram-card__image{object-fit:cover;object-position:center!important;transform:none;background:#050b14}
+.instagram-card__content{padding:18px 15px 15px}
+.instagram-card__content h3{font-size:clamp(17px,1.25vw,21px);line-height:1.05}
+.instagram-card__content p{font-size:11.5px;line-height:1.38;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.instagram-card__top{top:11px;left:11px;right:11px}
+.instagram-card__badge{padding:6px 8px;font-size:9px}
+.instagram-card__cta{margin-top:10px;font-size:11px}
+
+/* TV: retain future promise without consuming excessive vertical space */
+.tv-feature{min-height:330px;grid-template-columns:1.05fr .95fr}
+.tv-feature__copy,.tv-feature__visual{min-height:330px}
+.future-formats{grid-auto-rows:215px;gap:12px}
+.future-format{height:215px;grid-template-rows:128px 1fr}
+.future-format img{height:128px}
+.future-format div{padding:13px}
+.future-format h3{font-size:16px;margin-bottom:4px}
+.future-format p{font-size:12px;line-height:1.35}
+
+/* Community and footer */
+.community-shell{min-height:270px}
+.community-main{min-height:270px;padding:32px}
+.community-panel{padding:20px}
+.site-footer{padding-top:36px}
+
+/* Long lower sections can skip initial paint until close to viewport */
+.products-section,.selection-section,.instagram-section,.tv-section,.community-section{content-visibility:auto;contain-intrinsic-size:1px 700px}
+
+@media(max-width:1280px){
+  :root{--container:calc(100vw - 36px)}
+  .topics-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .selection-layout{grid-template-columns:1fr 1.6fr}
+  .selection-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));height:500px}
+  .selection-lead{height:500px;grid-template-rows:270px 1fr}
+  .selection-lead__image{height:270px}
+  .selection-card{height:100%;grid-template-rows:125px 1fr}
+  .selection-card .media-card__image{height:125px}
+}
+
+@media(max-width:980px){
+  :root{--container:calc(100vw - 28px);--section-space:48px}
+
+  /* IMPORTANT: reset desktop grids because this stylesheet loads last. */
+  .hero-grid{grid-template-columns:1fr!important}
+  .hero-main,.hero-side{height:auto;width:100%;min-width:0}
+  .hero-copy{min-height:540px}
+  .hero-side{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none!important}
+  .hero-side-card{height:190px;min-height:190px}
+
+  .topics-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+
+  .products-layout{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:360px 320px}
+  .product-feature{grid-column:1/-1;height:360px}
+  .product-secondary{height:320px}
+
+  .selection-layout{grid-template-columns:1fr;gap:12px}
+  .selection-lead{height:400px;grid-template-rows:215px 1fr}
+  .selection-lead__image{height:215px}
+  .selection-grid{height:auto;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:300px}
+  .selection-card{height:300px;grid-template-rows:140px 1fr}
+  .selection-card .media-card__image{height:140px}
+
+  .instagram-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .instagram-card{aspect-ratio:4/5}
+
+  .tv-feature{grid-template-columns:1fr!important;min-height:0}
+  .tv-feature__copy,.tv-feature__visual{min-height:0}
+  .tv-feature__copy{padding:28px}
+  .tv-feature__visual{height:290px}
+
+  .community-shell{grid-template-columns:1fr!important}
+}
+
+@media(max-width:720px){
+  :root{
+    --container:calc(100vw - 20px);
+    --section-space:38px;
+    --header-height:72px;
+  }
+
+  .site-header{height:72px}
+  .brand-logo{width:38px;height:38px}
+  .brand-wordmark{font-size:17px}
+  .menu-button{width:42px;height:42px}
+
+  .section-head{margin-bottom:14px}
+  .section-title{font-size:clamp(27px,7.6vw,34px);line-height:1.02}
+  .section-lead{font-size:14px;line-height:1.48}
+  .section-kicker{font-size:11px}
+
+  /* Hero: single column. The previous desktop declaration was overriding mobile. */
+  .hero-section{padding-top:14px}
+  .hero-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px;width:100%}
+  .hero-main{width:100%;min-width:0;min-height:min(500px,66vh);height:auto}
+  .hero-copy{width:100%;min-height:min(500px,66vh);padding:21px 18px}
+  .hero-copy h1{font-size:clamp(37px,11vw,49px);margin:10px 0 12px}
+  .hero-copy p{font-size:15px;line-height:1.48}
+
+  /* Hero secondary stories become a compact horizontal rail. */
+  .hero-side{
+    display:grid!important;
+    grid-auto-flow:column;
+    grid-auto-columns:min(78vw,300px);
+    grid-template-columns:none!important;
+    grid-template-rows:180px!important;
+    height:auto!important;
+    width:100%;
+    min-width:0;
+    gap:10px;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    padding-bottom:4px;
+  }
+  .hero-side::-webkit-scrollbar{display:none}
+  .hero-side-card{height:180px!important;min-height:180px!important;scroll-snap-align:start;padding:15px}
+  .hero-side-card h2{font-size:18px;max-width:80%}
+
+  .cover-card{min-height:278px;grid-template-rows:148px 1fr}
+  .cover-card .media-card__image{height:148px}
+  .cover-card .media-card__body{min-height:126px}
+
+  .topics-grid{
+    display:grid!important;
+    grid-auto-flow:column!important;
+    grid-auto-columns:minmax(176px,64vw)!important;
+    grid-template-columns:none!important;
+    grid-auto-rows:188px!important;
+    overflow-x:auto!important;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:x mandatory;
+    padding-bottom:8px!important;
+    scrollbar-width:none;
+  }
+  .topics-grid::-webkit-scrollbar{display:none}
+  .topic-card{height:188px;scroll-snap-align:start}
+  .topic-card--button .media-card__image{height:99px}
+
+  .products-layout{grid-template-columns:1fr;grid-template-rows:none;gap:10px}
+  .product-feature{height:360px}
+  .product-secondary{height:320px}
+  .product-feature .product-copy,.product-secondary .product-copy{padding:17px}
+  .product-feature .product-visual,.product-secondary .product-visual{inset:4px 3px 118px}
+  .product-copy h3{font-size:clamp(25px,7.5vw,34px)}
+  .product-copy p{font-size:12.5px}
+
+  /* Selection lead remains full width; secondary pieces become a compact rail. */
+  .selection-lead{height:350px;min-height:0;grid-template-rows:185px 1fr}
+  .selection-lead__image{height:185px}
+  .selection-lead__body{padding:15px}
+  .selection-lead h3{font-size:24px}
+  .selection-grid{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:min(200px,68vw);
+    grid-template-columns:none;
+    grid-template-rows:270px;
+    height:auto;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:x mandatory;
+    padding-bottom:8px;
+    scrollbar-width:none;
+  }
+  .selection-grid::-webkit-scrollbar{display:none}
+  .selection-card{height:270px;grid-template-rows:125px 1fr;scroll-snap-align:start}
+  .selection-card .media-card__image{height:125px}
+
+  /* Instagram behaves like an actual compact social window, not giant poster cards. */
+  .instagram-intro{gap:12px;margin-bottom:16px}
+  .instagram-grid{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:min(58vw,220px);
+    grid-template-columns:none;
+    gap:10px;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:inline mandatory;
+    padding-bottom:8px;
+    scrollbar-width:none;
+  }
+  .instagram-grid::-webkit-scrollbar{display:none}
+  .instagram-card{aspect-ratio:4/5;scroll-snap-align:start;border-radius:16px}
+  .instagram-card__image{object-fit:cover!important;object-position:center!important}
+  .instagram-card__content{padding:14px 12px 12px}
+  .instagram-card__content h3{font-size:16px}
+  .instagram-card__content p{display:none}
+  .instagram-card__cta{font-size:10.5px;margin-top:7px}
+  .instagram-card__top{top:9px;left:9px;right:9px}
+  .instagram-card__badge{font-size:8.5px;padding:5px 7px}
+
+  /* TV: stack feature image below copy; no narrow text column. */
+  .tv-feature{display:grid!important;grid-template-columns:1fr!important;min-height:0!important}
+  .tv-feature__copy{min-height:0!important;padding:22px 18px!important}
+  .tv-feature__visual{height:225px!important;min-height:225px!important}
+  .future-formats{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:min(190px,65vw);
+    grid-template-columns:none;
+    grid-auto-rows:190px;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:x mandatory;
+    padding-bottom:8px;
+    scrollbar-width:none;
+  }
+  .future-formats::-webkit-scrollbar{display:none}
+  .future-format{height:190px;grid-template-rows:108px 1fr;scroll-snap-align:start}
+  .future-format img{height:108px}
+  .future-format div{padding:11px}
+
+  .community-main{min-height:220px;padding:22px 18px}
+  .community-panel{padding:17px}
+}

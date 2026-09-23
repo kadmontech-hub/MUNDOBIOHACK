@@ -1,0 +1,437 @@
+/* Mundo Biohack V16 — realism, framing and Instagram integration */
+
+:root{
+  --instagram-magenta:#f03a76;
+  --instagram-violet:#7448ff;
+  --instagram-orange:#ff8b3d;
+}
+
+/* Global visual polish */
+section[id]{scroll-margin-top:calc(var(--header-height) + 18px)}
+.media-card,.hero-side-card,.product-feature,.product-secondary,.selection-lead,.selection-card,.future-format,.community-shell{
+  box-shadow:0 18px 54px rgba(0,0,0,.22)
+}
+.media-card__image img,.selection-lead__image img,.selection-card .media-card__image img,.future-format img{
+  object-position:50% 44%;
+}
+
+/* Hero framing: preserve subject while keeping copy legible */
+.hero-main__image{object-position:72% 48%}
+.hero-side-card:not(.hero-side-product) .hero-side-card__background{object-position:50% 42%}
+.hero-side-product .hero-side-card__background{object-fit:contain;object-position:82% 50%;padding:10px}
+.hero-main,.hero-side-card{transform:translateZ(0)}
+
+/* Product framing: never crop product silhouettes */
+.product-visual{overflow:hidden}
+.product-visual img{
+  object-fit:contain!important;
+  object-position:76% 50%!important;
+  width:96%;
+  height:96%;
+  margin:auto;
+  filter:drop-shadow(0 24px 42px rgba(0,0,0,.24));
+}
+.product-feature,.product-secondary{
+  border-color:rgba(77,220,255,.30);
+  background:
+    radial-gradient(circle at 76% 42%,rgba(7,120,255,.21),transparent 34%),
+    linear-gradient(145deg,#071727,#06111f 62%,#030912);
+}
+.product-feature:after,.product-secondary:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:linear-gradient(130deg,rgba(255,255,255,.035),transparent 32%,transparent 76%,rgba(77,220,255,.03));
+}
+.product-copy{z-index:2}
+.product-brand-note{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  width:max-content;
+  max-width:100%;
+  margin:0 0 14px;
+  color:#dcecff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.product-brand-note:before{
+  content:"";
+  width:7px;
+  height:7px;
+  flex:0 0 auto;
+  border-radius:50%;
+  background:var(--cyan);
+  box-shadow:0 0 18px rgba(77,220,255,.6);
+}
+
+/* Instagram section */
+.instagram-section{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 12%,rgba(116,72,255,.13),transparent 28%),
+    radial-gradient(circle at 88% 80%,rgba(240,58,118,.09),transparent 26%),
+    linear-gradient(180deg,#040914,#050b16 54%,#030811);
+}
+.instagram-section:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.16;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:36px 36px;
+  mask-image:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent);
+}
+.instagram-section .container{position:relative;z-index:1}
+.instagram-intro{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:28px;
+}
+.instagram-brandline{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin-top:13px;
+  color:#dce5f4;
+  font-size:14px;
+  font-weight:750;
+}
+.instagram-brandline__icon{
+  display:grid;
+  width:25px;
+  height:25px;
+  place-items:center;
+  border-radius:8px;
+  background:linear-gradient(135deg,var(--instagram-orange),var(--instagram-magenta) 45%,var(--instagram-violet));
+  box-shadow:0 7px 24px rgba(240,58,118,.16);
+}
+.instagram-brandline__icon svg{width:15px;height:15px}
+.instagram-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+.instagram-card{
+  position:relative;
+  isolation:isolate;
+  min-width:0;
+  aspect-ratio:9/16;
+  overflow:hidden;
+  border:1px solid rgba(126,164,223,.24);
+  border-radius:24px;
+  background:#08111e;
+  box-shadow:0 26px 72px rgba(0,0,0,.31);
+  transition:transform .2s var(--ease),border-color .2s ease,box-shadow .2s ease;
+}
+.instagram-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(77,220,255,.52);
+  box-shadow:0 30px 84px rgba(0,0,0,.38);
+}
+.instagram-card__image{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.015);
+}
+.instagram-card__overlay{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(180deg,rgba(2,7,14,.08) 15%,rgba(2,7,14,.18) 42%,rgba(2,7,14,.96) 100%),
+    linear-gradient(90deg,rgba(3,8,16,.12),transparent 45%,rgba(3,8,16,.08));
+}
+.instagram-card__top{
+  position:absolute;
+  top:14px;
+  left:14px;
+  right:14px;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.instagram-card__badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 10px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  color:#fff;
+  background:rgba(2,8,16,.64);
+  backdrop-filter:blur(10px);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.instagram-card__content{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:2;
+  padding:22px 20px 20px;
+}
+.instagram-card__content h3{
+  margin:0 0 8px;
+  font-size:clamp(20px,1.7vw,26px);
+  line-height:1.02;
+  letter-spacing:-.035em;
+}
+.instagram-card__content p{
+  margin:0;
+  color:#c0ccdc;
+  font-size:13px;
+  line-height:1.45;
+}
+.instagram-card__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-top:14px;
+  color:#fff;
+  font-size:12px;
+  font-weight:850;
+}
+.instagram-card__cta svg{width:15px;height:15px}
+.instagram-note{
+  max-width:880px;
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+}
+.instagram-section .section-actions{margin-top:26px}
+
+/* Community: make Instagram an active next step when WhatsApp is not configured */
+.community-panel--instagram{
+  position:relative;
+  overflow:hidden;
+  border-color:rgba(240,58,118,.24);
+  background:
+    radial-gradient(circle at 85% 10%,rgba(116,72,255,.16),transparent 38%),
+    rgba(8,17,31,.72);
+}
+.community-panel--instagram:after{
+  content:"@mundobiohack";
+  position:absolute;
+  right:18px;
+  bottom:14px;
+  color:rgba(255,255,255,.16);
+  font-size:18px;
+  font-weight:900;
+}
+
+/* Stronger visual rhythm while keeping the current language */
+.selection-section{background:linear-gradient(180deg,rgba(3,7,15,0),rgba(7,13,24,.46),rgba(3,7,15,0))}
+.selection-lead__image img{object-position:50% 38%}
+.tv-feature__visual img{object-position:70% 44%}
+.future-format img{object-position:50% 40%}
+
+/* Human-eye scanability: hierarchy, line length and consistent reading rhythm */
+.section-head,.instagram-intro{max-width:100%}
+.section-head>div,.instagram-intro>div{max-width:780px}
+.section-title{
+  max-width:18ch;
+  text-wrap:balance;
+  line-height:1.04;
+  letter-spacing:-.035em;
+}
+.section-lead{
+  max-width:66ch;
+  line-height:1.62;
+  text-wrap:pretty;
+}
+.section-kicker{
+  letter-spacing:.105em;
+  font-weight:900;
+}
+.hero-copy{max-width:680px}
+.hero-copy h1{max-width:13ch;text-wrap:balance;line-height:.98}
+.hero-copy p{max-width:58ch;line-height:1.6}
+.hero-actions{gap:10px 12px}
+
+/* Cards: make headline/meta/description distinguishable in one glance */
+.media-card__body,.selection-lead__body,.product-copy{min-width:0}
+.media-card__body h3,.selection-lead__body h3,.product-copy h3,.future-format h3,.community-panel h3{
+  text-wrap:balance;
+}
+.media-card__body p:not(.original-title),.selection-copy,.product-copy>p,.future-format p,.community-panel p{
+  line-height:1.55;
+  text-wrap:pretty;
+}
+.cover-card .media-card__body p:not(.original-title),
+.selection-card .media-card__body>p:last-child,
+.instagram-card__content p{
+  display:-webkit-box;
+  overflow:hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+}
+.instagram-card__content h3{
+  display:-webkit-box;
+  overflow:hidden;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+.cover-card__meta,.external-badge,.content-status,.type-badge,.product-tag{
+  font-variant-numeric:tabular-nums;
+}
+
+/* Strong but quiet section separation; avoid card-wall fatigue */
+.cover-section,.topics-section,.products-section,.selection-section,.instagram-section,.tv-section,.community-section{
+  border-top:1px solid rgba(121,158,211,.08);
+}
+.products-section,.instagram-section,.community-section{
+  position:relative;
+}
+.products-section:before,.community-section:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 0,rgba(55,146,255,.06),transparent 34%);
+}
+.products-section>.container,.community-section>.container{position:relative;z-index:1}
+
+/* Topics: compact catalogue on desktop, thumb-friendly rail on mobile */
+.topics-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.topic-card{min-width:0}
+.topic-card .media-card__image{aspect-ratio:16/9;overflow:hidden}
+.topic-card .media-card__body{padding-block:16px 18px}
+.topic-card .media-card__body h3{margin-bottom:6px}
+.topic-card .media-card__body p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+/* Products: copy stays concise and CTAs align predictably */
+.product-copy{display:flex;flex-direction:column;align-items:flex-start}
+.product-copy>p{max-width:54ch}
+.product-tags{margin-top:auto}
+.product-actions{margin-top:16px}
+.product-info-btn{min-height:44px}
+
+/* Selection: easier scanning through stronger metadata and controlled measure */
+.selection-lead__body,.selection-card .media-card__body{max-width:100%}
+.original-title{opacity:.72;font-size:.78rem;line-height:1.35}
+.selection-copy{max-width:62ch}
+.source-note{max-width:980px;line-height:1.6}
+
+/* Dialogs and search should read like compact information panels */
+.info-dialog__panel,.search-panel{max-height:min(88vh,760px);overflow:auto}
+.info-dialog__panel>p,.product-dialog-points{max-width:64ch}
+.product-dialog-points{display:grid;gap:9px;padding-left:1.15rem}
+.search-result{min-height:64px}
+.search-result strong{line-height:1.2}
+.search-result span{line-height:1.4}
+
+/* Visible interaction states remain obvious without relying on hover */
+.instagram-card:focus-visible,.media-card:focus-visible,.hero-side-card:focus-visible,.community-panel--instagram:focus-visible{
+  outline:3px solid var(--cyan);
+  outline-offset:4px;
+}
+
+/* Improve below-the-fold rendering without changing content semantics */
+@supports (content-visibility:auto){
+  .products-section,.selection-section,.instagram-section,.tv-section,.community-section{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 900px;
+  }
+}
+
+/* Responsive framing */
+@media (max-width:1180px){
+  .instagram-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .instagram-card{aspect-ratio:4/5}
+  .product-visual img{object-position:72% 50%!important}
+  .topics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (max-width:980px){
+  .hero-main__image{object-position:66% 46%}
+  .hero-side-product .hero-side-card__background{object-position:76% 50%}
+  .instagram-intro{align-items:flex-start;flex-direction:column}
+  .instagram-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .product-visual img{object-position:68% 50%!important}
+  .section-title{max-width:22ch}
+}
+
+@media (max-width:720px){
+  .hero-main__image{object-position:60% 42%}
+  .hero-side-card:not(.hero-side-product) .hero-side-card__background{object-position:50% 38%}
+  .hero-side-product .hero-side-card__background{object-position:72% 50%;padding:6px}
+  .section-title{max-width:100%;font-size:clamp(28px,8vw,38px)}
+  .section-lead{font-size:15px;line-height:1.55}
+  .section-head{margin-bottom:22px}
+  .hero-copy h1{max-width:12ch}
+
+  .topics-grid{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:min(76vw,300px);
+    grid-template-columns:none;
+    gap:12px;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:inline mandatory;
+    scrollbar-width:none;
+    padding-bottom:12px;
+  }
+  .topics-grid::-webkit-scrollbar{display:none}
+  .topic-card{scroll-snap-align:start}
+  .topic-card .media-card__image{aspect-ratio:16/10}
+
+  .instagram-section{padding-bottom:66px}
+  .instagram-grid{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:min(78vw,310px);
+    grid-template-columns:none;
+    gap:13px;
+    overflow-x:auto;
+    overscroll-behavior-inline:contain;
+    scroll-snap-type:inline mandatory;
+    scrollbar-width:none;
+    padding:4px 0 14px;
+  }
+  .instagram-grid::-webkit-scrollbar{display:none}
+  .instagram-card{aspect-ratio:9/16;scroll-snap-align:start}
+  .instagram-card:hover{transform:none}
+  .instagram-card__content{padding:20px 17px 18px}
+  .instagram-card__content h3{font-size:22px}
+  .product-visual img{object-position:50% 50%!important;width:94%;height:94%}
+  .selection-lead__image img,.selection-card .media-card__image img{object-position:50% 42%}
+  .tv-feature__visual img{object-position:62% 42%}
+  .product-copy>p,.source-note{max-width:none}
+}
+
+@media (max-width:430px){
+  .instagram-card__content p{-webkit-line-clamp:2}
+  .hero-actions>a,.hero-actions>button{min-height:46px}
+  .instagram-intro>.secondary-btn{width:100%;justify-content:center}
+}
+
+@media (hover:none){
+  .instagram-card:hover{transform:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .instagram-card{transition:none}
+  .instagram-card:hover{transform:none}
+}
