@@ -6,6 +6,14 @@
   const grid = document.querySelector("[data-instagram-grid]");
   const profileUrl = config.instagramUrl || instagram.profileUrl || "https://www.instagram.com/mundobiohack/";
 
+  if (!document.querySelector('link[data-v16-density]')) {
+    const stylesheet = document.createElement("link");
+    stylesheet.rel = "stylesheet";
+    stylesheet.href = "assets/css/v16-density.css";
+    stylesheet.dataset.v16Density = "";
+    document.head.append(stylesheet);
+  }
+
   const instagramIcon = () => `
     <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
       <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"></rect>
@@ -18,17 +26,43 @@
       <path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"></path>
     </svg>`;
 
-  if (grid && Array.isArray(instagram.items)) {
+  const captionTitle = (caption = "", fallback = "Mundo Biohack en Instagram") => {
+    const clean = String(caption || "").replace(/\s+/g, " ").trim();
+    if (!clean) return fallback;
+    const sentence = clean.split(/(?<=[.!?])\s/)[0] || clean;
+    return sentence.length > 72 ? `${sentence.slice(0, 69).trim()}…` : sentence;
+  };
+
+  const captionDescription = (caption = "", fallback = "Abrí la publicación original para verla completa en Instagram.") => {
+    const clean = String(caption || "").replace(/\s+/g, " ").trim();
+    if (!clean) return fallback;
+    return clean.length > 150 ? `${clean.slice(0, 147).trim()}…` : clean;
+  };
+
+  const normalizeLiveItem = (item, index) => ({
+    id: item.id || `instagram-live-${index + 1}`,
+    type: item.type || "Instagram",
+    title: captionTitle(item.caption),
+    description: captionDescription(item.caption),
+    thumbnail: item.thumbnail || "assets/images/image-fallback.svg",
+    url: item.url || profileUrl,
+    focalDesktop: "50% 50%",
+    focalMobile: "50% 50%",
+    isLive: true
+  });
+
+  const renderItems = (items) => {
+    if (!grid || !Array.isArray(items) || !items.length) return;
     const fragment = document.createDocumentFragment();
 
-    instagram.items.slice(0, 4).forEach((item, index) => {
+    items.slice(0, 6).forEach((item, index) => {
       const link = document.createElement("a");
       const targetUrl = item.url || profileUrl;
       link.className = "instagram-card";
       link.href = targetUrl;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.dataset.track = "instagram_content_click";
+      link.dataset.track = item.isLive ? "instagram_reel_click" : "instagram_content_click";
       link.dataset.instagramItem = item.id || `instagram-${index + 1}`;
       link.dataset.searchItem = "";
       link.dataset.searchTitle = item.title || "Instagram Mundo Biohack";
@@ -46,8 +80,9 @@
       image.width = 720;
       image.height = 1280;
       image.dataset.fallback = "assets/images/image-fallback.svg";
-      image.style.objectPosition = item.focalDesktop || "50% 42%";
-      if (item.focalMobile) image.dataset.focalMobile = item.focalMobile;
+      image.dataset.focalDesktop = item.focalDesktop || "50% 50%";
+      image.dataset.focalMobile = item.focalMobile || "50% 50%";
+      image.style.objectPosition = image.dataset.focalDesktop;
 
       const overlay = document.createElement("span");
       overlay.className = "instagram-card__overlay";
@@ -64,11 +99,11 @@
       title.textContent = item.title || "Mundo Biohack en Instagram";
 
       const description = document.createElement("p");
-      description.textContent = item.description || "Abrí el perfil oficial para ver las publicaciones más recientes.";
+      description.textContent = item.description || "Abrí el perfil oficial para ver la publicación completa.";
 
       const cta = document.createElement("span");
       cta.className = "instagram-card__cta";
-      cta.innerHTML = `Ver en Instagram ${arrowIcon()}`;
+      cta.innerHTML = `${item.isLive ? "Ver publicación" : "Ver en Instagram"} ${arrowIcon()}`;
 
       content.append(title, description, cta);
       link.append(image, overlay, top, content);
@@ -76,7 +111,28 @@
     });
 
     grid.replaceChildren(fragment);
-  }
+  };
+
+  const fallbackItems = Array.isArray(instagram.items) ? instagram.items : [];
+  renderItems(fallbackItems);
+
+  const loadLiveInstagram = async () => {
+    try {
+      const response = await fetch("/api/instagram-feed?limit=6", {
+        headers: { Accept: "application/json" },
+        cache: "no-store"
+      });
+      if (!response.ok) return;
+      const payload = await response.json();
+      if (!payload?.ok || !Array.isArray(payload.items) || !payload.items.length) return;
+      renderItems(payload.items.map(normalizeLiveItem));
+      document.documentElement.dataset.instagramFeed = "live";
+    } catch (_) {
+      document.documentElement.dataset.instagramFeed = "fallback";
+    }
+  };
+
+  loadLiveInstagram();
 
   document.querySelectorAll("[data-instagram-profile-link]").forEach((link) => {
     link.href = profileUrl;
@@ -86,8 +142,9 @@
   const updateMobileFocals = () => {
     const mobile = window.matchMedia("(max-width: 720px)").matches;
     document.querySelectorAll(".instagram-card__image[data-focal-mobile]").forEach((image) => {
-      if (!image.dataset.focalDesktop) image.dataset.focalDesktop = image.style.objectPosition || "50% 42%";
-      image.style.objectPosition = mobile ? image.dataset.focalMobile : image.dataset.focalDesktop;
+      image.style.objectPosition = mobile
+        ? image.dataset.focalMobile || "50% 50%"
+        : image.dataset.focalDesktop || "50% 50%";
     });
   };
 
