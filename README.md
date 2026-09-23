@@ -25,7 +25,7 @@ Campos disponibles:
 
 Cuando una URL está vacía, su enlace no aparece en la interfaz ni queda en el orden de tabulación.
 
-Instagram oficial configurado en V16:
+Instagram oficial configurado:
 
 - `https://www.instagram.com/mundobiohack/`
 
@@ -34,9 +34,11 @@ Instagram oficial configurado en V16:
 La release candidate V16 suma una capa de realismo visual, jerarquía y publicación:
 
 - nueva sección editorial **Desde Instagram**;
-- modelo separado `assets/js/instagram-content.js`;
+- fallback editorial en `assets/js/instagram-content.js`;
+- endpoint `api/instagram-feed.js` preparado para traer publicaciones reales desde la API oficial de Instagram;
 - capa de estilos `assets/css/v16-realism.css`;
-- lógica complementaria `assets/js/v16.js`;
+- capa de densidad `assets/css/v16-density.css` para reducir sobredimensionamiento y aumentar módulos visibles;
+- lógica `assets/js/v16.js` para feed real/fallback, render de Instagram, focales responsive y tracking;
 - focales responsive para hero, editoriales, TV y productos;
 - productos protegidos contra crop mediante `object-fit: contain`;
 - relación comercial con NipponFlex comunicada con mayor claridad;
@@ -45,30 +47,49 @@ La release candidate V16 suma una capa de realismo visual, jerarquía y publicac
 - versión técnica unificada `16.0.0-rc1`;
 - jerarquía visual optimizada para lectura rápida y menor fatiga.
 
-## Scanability
+## Scanability y densidad
 
 La capa V16 está pensada para que cada tramo pueda entenderse antes de leerlo en profundidad:
 
+- hero más contenido;
 - títulos de sección con medida controlada y wrapping balanceado;
 - bajadas con ancho de lectura limitado;
 - descripciones secundarias visualmente acotadas;
 - estructura repetible `metadata → título → descripción → CTA`;
-- Temas en 3 columnas desktop, 2 tablet y rail horizontal mobile;
+- Temas en 4 columnas wide desktop, 3 en desktop/tablet y rail horizontal mobile;
+- Selección editorial compactada en una pieza principal + tres módulos;
+- Productos reducidos en altura sin perder protagonismo;
+- Instagram preparado para hasta seis piezas reales;
 - Instagram en rail horizontal 9:16 mobile;
+- TV y comunidad más compactos;
 - divisores de sección sutiles para evitar efecto de “pared de tarjetas”;
 - modales y buscador limitados al viewport;
-- estados de foco reforzados;
-- productos con CTA y jerarquía consistente.
+- estados de foco reforzados.
 
-## Instagram
+## Instagram real y autoactualizable
 
-La web no carga múltiples embeds pesados de Meta. V16 usa una presentación editorial liviana con thumbnails y enlaces al perfil oficial. Los contenidos se administran en:
+La web mantiene un fallback editorial y después intenta obtener los últimos contenidos desde:
 
-`assets/js/instagram-content.js`
+`/api/instagram-feed?limit=6`
 
-Cuando existan URLs verificadas de Reels individuales, reemplazar el `url` de cada item sin modificar la UI.
+El access token nunca se expone al navegador. Para activar el feed real, configurar en Vercel:
 
-Las tarjetas actuales representan formatos editoriales de `@mundobiohack`; no deben presentarse como Reels individuales hasta tener URLs reales verificadas.
+- `INSTAGRAM_ACCESS_TOKEN`
+- `INSTAGRAM_ACCOUNT_ID`
+- `INSTAGRAM_API_VERSION`
+- `INSTAGRAM_GRAPH_BASE_URL`
+
+Existe `.env.example` sin secretos reales.
+
+Cuando el endpoint está configurado, la web reemplaza automáticamente el fallback por hasta seis publicaciones reales con su thumbnail, caption y permalink. Si la API no está disponible, la sección continúa funcionando con el fallback actual.
+
+## Curaduría externa
+
+El siguiente sprint de investigación está definido en:
+
+`RESEARCH-BRIEF-EXTERNAL-CURATION-V16.md`
+
+La consigna pide 40+ candidatos verificados, mínimo 15 videos o entrevistas y una selección final alineada con las categorías de la web.
 
 ## Metadatos
 
@@ -91,12 +112,16 @@ imágenes sin `alt`, botones sin nombre accesible, URLs inseguras o textos inter
 - `index.html`
 - `assets/css/styles.css`
 - `assets/css/v16-realism.css`
+- `assets/css/v16-density.css`
 - `assets/js/config.js`
 - `assets/js/instagram-content.js`
 - `assets/js/v16.js`
 - `assets/js/app.js`
+- `api/instagram-feed.js`
+- `.env.example`
 - `scripts/preflight.mjs`
 - `QA-VISUAL-V16.md`
+- `RESEARCH-BRIEF-EXTERNAL-CURATION-V16.md`
 - páginas legales
 - `robots.txt`
 - `sitemap.xml`
@@ -116,4 +141,4 @@ La matriz de encuadre, reglas de scanability y breakpoints obligatorios de revis
 
 `QA-VISUAL-V16.md`
 
-No considerar la release final hasta completar pixel-QA en el preview de Vercel.
+No considerar la release final hasta completar pixel-QA en el preview de Vercel y después revisar los assets uno por uno.
