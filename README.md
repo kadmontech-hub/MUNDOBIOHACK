@@ -2,12 +2,11 @@
 
 ## Despliegue
 
-1. Subir el contenido completo de esta carpeta a un repositorio de GitHub.
-2. Importar el repositorio desde Vercel.
-3. Framework preset: **Other**.
-4. Build command: `npm run build`.
-5. Output directory: `.`.
-6. Publicar.
+1. El repositorio se despliega desde GitHub hacia Vercel.
+2. Framework preset: **Other**.
+3. Build command: `npm run build`.
+4. Output directory: `.`.
+5. Cada branch puede generar un preview antes de mergear a `main`.
 
 ## Configuración real
 
@@ -25,6 +24,33 @@ Campos disponibles:
 - `legalContact`
 
 Cuando una URL está vacía, su enlace no aparece en la interfaz ni queda en el orden de tabulación.
+
+Instagram oficial configurado en V16:
+
+- `https://www.instagram.com/mundobiohack/`
+
+## V16 RC1
+
+La release candidate V16 suma una capa de realismo visual y publicación:
+
+- nueva sección editorial **Desde Instagram**;
+- modelo separado `assets/js/instagram-content.js`;
+- capa de estilos `assets/css/v16-realism.css`;
+- lógica complementaria `assets/js/v16.js`;
+- focales responsive para hero, editoriales, TV y productos;
+- productos protegidos contra crop mediante `object-fit: contain`;
+- relación comercial con NipponFlex comunicada con mayor claridad;
+- fuentes OMS de Nutrición y Salud Mental enlazadas en español;
+- canonical/OG/schema unificados a `https://mundobiohack.com/`;
+- versión técnica unificada `16.0.0-rc1`.
+
+## Instagram
+
+La web no carga múltiples embeds pesados de Meta. V16 usa una presentación editorial liviana con thumbnails y enlaces al perfil oficial. Los contenidos se administran en:
+
+`assets/js/instagram-content.js`
+
+Cuando existan URLs verificadas de Reels individuales, reemplazar el `url` de cada item sin modificar la UI.
 
 ## Metadatos
 
@@ -46,9 +72,13 @@ imágenes sin `alt`, botones sin nombre accesible, URLs inseguras o textos inter
 
 - `index.html`
 - `assets/css/styles.css`
+- `assets/css/v16-realism.css`
 - `assets/js/config.js`
+- `assets/js/instagram-content.js`
+- `assets/js/v16.js`
 - `assets/js/app.js`
 - `scripts/preflight.mjs`
+- `QA-VISUAL-V16.md`
 - páginas legales
 - `robots.txt`
 - `sitemap.xml`
@@ -56,11 +86,16 @@ imágenes sin `alt`, botones sin nombre accesible, URLs inseguras o textos inter
 
 ## Assets externos
 
-Las imágenes editoriales y de productos continúan cargándose desde Imgur.
+Las imágenes editoriales y de productos continúan cargándose parcialmente desde Imgur.
 Las miniaturas audiovisuales cargan desde YouTube.
 Cada imagen externa tiene un fallback local.
 
+La migración de assets propios a almacenamiento controlado por Mundo Biohack queda como siguiente fase de performance y ownership.
 
-## V15 — sistema simétrico
+## QA visual
 
-Esta versión normaliza alturas, proporciones y grillas. La selección editorial utiliza una pieza principal y cuatro piezas secundarias en una matriz 2x2. Los productos usan una composición 2–1–1 de igual altura en desktop.
+La matriz de encuadre y los breakpoints obligatorios de revisión están documentados en:
+
+`QA-VISUAL-V16.md`
+
+No considerar la release final hasta completar pixel-QA en el preview de Vercel.
