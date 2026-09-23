@@ -31,7 +31,7 @@ Instagram oficial configurado en V16:
 
 ## V16 RC1
 
-La release candidate V16 suma una capa de realismo visual y publicación:
+La release candidate V16 suma una capa de realismo visual, jerarquía y publicación:
 
 - nueva sección editorial **Desde Instagram**;
 - modelo separado `assets/js/instagram-content.js`;
@@ -42,7 +42,23 @@ La release candidate V16 suma una capa de realismo visual y publicación:
 - relación comercial con NipponFlex comunicada con mayor claridad;
 - fuentes OMS de Nutrición y Salud Mental enlazadas en español;
 - canonical/OG/schema unificados a `https://mundobiohack.com/`;
-- versión técnica unificada `16.0.0-rc1`.
+- versión técnica unificada `16.0.0-rc1`;
+- jerarquía visual optimizada para lectura rápida y menor fatiga.
+
+## Scanability
+
+La capa V16 está pensada para que cada tramo pueda entenderse antes de leerlo en profundidad:
+
+- títulos de sección con medida controlada y wrapping balanceado;
+- bajadas con ancho de lectura limitado;
+- descripciones secundarias visualmente acotadas;
+- estructura repetible `metadata → título → descripción → CTA`;
+- Temas en 3 columnas desktop, 2 tablet y rail horizontal mobile;
+- Instagram en rail horizontal 9:16 mobile;
+- divisores de sección sutiles para evitar efecto de “pared de tarjetas”;
+- modales y buscador limitados al viewport;
+- estados de foco reforzados;
+- productos con CTA y jerarquía consistente.
 
 ## Instagram
 
@@ -51,6 +67,8 @@ La web no carga múltiples embeds pesados de Meta. V16 usa una presentación edi
 `assets/js/instagram-content.js`
 
 Cuando existan URLs verificadas de Reels individuales, reemplazar el `url` de cada item sin modificar la UI.
+
+Las tarjetas actuales representan formatos editoriales de `@mundobiohack`; no deben presentarse como Reels individuales hasta tener URLs reales verificadas.
 
 ## Metadatos
 
@@ -94,7 +112,7 @@ La migración de assets propios a almacenamiento controlado por Mundo Biohack qu
 
 ## QA visual
 
-La matriz de encuadre y los breakpoints obligatorios de revisión están documentados en:
+La matriz de encuadre, reglas de scanability y breakpoints obligatorios de revisión están documentados en:
 
 `QA-VISUAL-V16.md`
 
